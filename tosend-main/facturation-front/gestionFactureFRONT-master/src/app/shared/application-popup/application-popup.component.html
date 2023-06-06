@@ -1,0 +1,26 @@
+<form [formGroup]="applicationForm" >
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+      <div style="display: flex; flex-direction: column;align-items: center;">
+        <label class="labelMarge">Code de l'application</label>
+        <input formControlName="code" style="width: 22rem;" type="text" pInputText>
+      </div><br>
+      <div style="display: flex; flex-direction: column;align-items: center;">
+          <label class="labelMarge">Libellé de l'application</label>
+          <input formControlName="libelle" style="width: 22rem;" type="text" pInputText>
+      </div><br>
+      <div style="display: flex; flex-direction: column;align-items: center;">
+          <label class="labelMarge">Prix de l'application</label>
+          <input formControlName="prix" style="width: 22rem;" type="text" pInputText>
+      </div>
+      
+    </div>
+    <br>
+    
+    <br>
+    
+
+  </form>
+  <div style="display: flex; flex-direction: row; justify-content: flex-end;">
+    <button pButton icon="pi pi-times"   class="p-button-danger" label="Cancel"></button>
+    <button pButton icon="pi pi-check" style="margin-left: 2rem;" (click)="submitApplication()" label="Submit" ></button>
+  </div>

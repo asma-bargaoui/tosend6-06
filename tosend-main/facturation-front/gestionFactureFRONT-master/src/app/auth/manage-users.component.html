@@ -1,0 +1,346 @@
+<div style="display: flex; justify-content: flex-start; flex-direction: row; margin-top: 2rem">
+  <mat-form-field>
+    <mat-label>Search</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+  </mat-form-field>
+  
+  <button mat-raised-button class="addBtnColor" (click)="openDialog()">+ ajouter utilisateur:</button>
+</div>
+
+
+<cdk-virtual-scroll-viewport appendOnly itemSize="50" class="example-viewport">
+  <div style="display: flex; justify-content: flex-start; flex-direction: column; margin-bottom: 100px">
+    <div class="mat-elevation-z8 table-container">
+      <table mat-table [dataSource]="dataSource">
+        <!-- Define the columns -->
+        <ng-container matColumnDef="username">
+          <mat-header-cell *matHeaderCellDef> Nom </mat-header-cell>
+          <mat-cell *matCellDef="let user">
+            <div style="display: flex; align-items: center">
+              <div class="circle">
+                <span class="initials">{{ user.username.charAt(0) | twoFirstLetters }}</span>
+              </div>
+              <div style="margin-left: 1rem;">{{ user.username | titlecase }}</div>
+            </div>
+          </mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="email">
+          <mat-header-cell *matHeaderCellDef> Email </mat-header-cell>
+          <mat-cell *matCellDef="let user">{{ user.email }}</mat-cell>
+        </ng-container>
+        
+        <ng-container matColumnDef="role">
+          <mat-header-cell *matHeaderCellDef> Role </mat-header-cell>
+          <mat-cell *matCellDef="let user">{{ user.roles[0] }}</mat-cell>
+        </ng-container>
+        
+     
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      </table>
+    </div>
+  </div>
+</cdk-virtual-scroll-viewport>
+
+<p-dialog header="Nouvelle utilisateur" [(visible)]="visible" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+          [draggable]="false" [resizable]="false">
+  <div><br>
+    <div>
+      <div style="display: flex; justify-content: space-around; flex-direction: row">
+        <p-selectButton optionLabel="label" optionValue="value"></p-selectButton>
+      </div>
+    </div>
+    <form [formGroup]="userForm">
+      <div style="display: flex; flex-direction: column; color: #065878"><br>
+        <div style="display: flex; flex-direction: column; justify-content: space-between">
+          <div style="display: flex; flex-direction: column; justify-content: flex-start">
+            <label><b>nom utilisateur </b></label><br>
+            <input formControlName="username" type="text" pInputText style="border-radius: 15px">
+          </div>
+          <br>
+          <div style="display: flex; flex-direction: column; justify-content: flex-start">
+            <label><b>Email</b></label><br>
+            <input formControlName="email" type="text" pInputText style="border-radius: 15px">
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</p-dialog>
+
+
+
+
+
+<p-dialog header="Nouvelle utilisateur:"[(visible)]="visible" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+          [draggable]="false" [resizable]="false">
+  <div><br>
+    <div>
+      <div style="display: flex; justify-content: space-around; flex-direction: row">
+        <p-selectButton optionLabel="label" optionValue="value"></p-selectButton>
+      </div>
+    </div>
+    <form [formGroup]="userForm">
+      <div style="display: flex; flex-direction: column; color: #065878"><br>
+        <div style="display: flex; flex-direction: column; justify-content: space-between">
+
+          <div style="display: flex; flex-direction: column; justify-content: flex-start">
+            <label><b>Nom utilisateur:</b></label><br>
+            <input formControlName="username" type="text" pInputText style="border-radius: 15px">
+          </div>
+          <br>
+          
+          <div style="display: flex; flex-direction: column; justify-content: flex-start">
+            <label><b>Email:</b></label><br>
+            <input formControlName="email" type="text" pInputText style="border-radius: 15px">
+          </div>
+          <br>
+          <div style="display: flex; flex-direction: column; justify-content: flex-start">
+            <label><b>Role</b></label><br>
+            <p-dropdown [options]="roles" formControlName="role" optionLabel="name"></p-dropdown>
+          </div>
+          
+          <br>
+          <div style="display: flex; flex-direction: column; justify-content: flex-start">
+            <label><b>mot de passe:</b></label><br>
+            <input formControlName="password" type="password" pPassword style="border-radius: 15px">
+          </div>
+        </div>
+        <br>
+      </div>
+    </form>
+    
+  </div>
+  <ng-template pTemplate="footer">
+    <button (click)="visible = false" pButton pRipple type="button" icon="pi pi-times" label="Annuler" class="p-button-danger"></button>
+    <p-button (click)="submitUser()" icon="pi pi-check" label="enregistrer" class="p-button-text"></p-button>
+  </ng-template>
+</p-dialog>
+
+
+<mat-paginator [pageSizeOptions]="[5, 10, 20]"
+showFirstLastButtons
+aria-label="Select page of periodic elements">
+</mat-paginator>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div  class="mat-header-cell">
+
+<div style="display: flex; justify-content: flex-start; flex-direction: row; margin-top: 2rem">
+  <mat-form-field>
+    <mat-label>Search</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+  </mat-form-field>
+  <button mat-raised-button class="addBtnColor" (click)="openDialog()">+ Add new user</button>
+</div>
+
+<div class="mat-elevation-z8 table-container">
+  <table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="username">
+      <th mat-header-cell *matHeaderCellDef> nom </th>
+      <td mat-cell *matCellDef="let user">
+        <div style="display: flex; align-items: center">
+          <div class="circle">
+            <span class="initials">{{ (user.username | twoFirstLetters) as string | uppercase }}</span>   
+                 </div>
+          <div style="margin-left: 1rem;">
+            {{user.username | titlecase}}
+          </div>
+        </div>
+      </td>
+    </ng-container>
+    
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef> email </th>
+      <td mat-cell *matCellDef="let user"> {{user.email}} </td>
+    </ng-container>
+    
+   
+    
+    
+    <ng-container matColumnDef="blocked">
+      <th mat-header-cell *matHeaderCellDef> status </th>
+      <td mat-cell *matCellDef="let user"> {{ user.blocked ? 'Bloqué' : 'Active' }}  </td>
+    </ng-container>
+    
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+                 showFirstLastButtons
+                 aria-label="Select page of periodic elements">
+  </mat-paginator>
+</div>
+
+
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<input
+type="text"
+style="padding:8px;margin:15px auto;width:30%;"
+placeholder="Type to filter the name column..."
+(keyup)="updateFilter($event)"
+/>
+<ngx-datatable
+#table
+class="material"
+[columns]="columns"
+[columnMode]="ColumnMode.force"
+[headerHeight]="50"
+[footerHeight]="50"
+rowHeight="auto"
+[limit]="10"
+[rows]="rows"
+
+<ngx-datatable-column prop="username" name="Username" [cellClass]="'column-divider'" >
+  <div style="display: flex; flex-direction: row; justify-content: space-between">
+  <ng-template let-row="row" ngx-datatable-cell-template>
+    <div style="display: flex; align-items: center">
+      <div class="circle">
+        <span class="initials">{{row.username | twoFirstLetters}}</span>
+      </div>
+      <div style="margin-left: 1rem">
+        <div mat-line>{{row.username | titlecase}}</div>
+      </div>
+    </div>
+  </ng-template>
+
+</div>
+</ngx-datatable-column>
+<ngx-datatable-column name="" [cellClass]="'column-divider'"></ngx-datatable-column>
+
+<ngx-datatable-column prop="email" name="Email" [cellClass]="'column-divider'" [width]="200"></ngx-datatable-column>
+<ngx-datatable-column name="" [cellClass]="'column-divider'"></ngx-datatable-column>
+
+<ngx-datatable-column prop="roles[0].name" name="Role" [cellClass]="'column-divider'"></ngx-datatable-column>
+</ngx-datatable>
+
+
+
+
+<div class="row-limit-container">
+<label for="row-limit">Rows per page:</label>
+<select id="row-limit" [(ngModel)]="rowLimit" (change)="onRowLimitChange()">
+  <option value="5">5</option>
+  <option value="10">10</option>
+  <option value="15">15</option>
+</select>
+</div>
+
+
+
+<!--<div style="display: flex; justify-content: flex-start; flex-direction: row; margin-top: 2rem">
+  <span class="p-input-icon-left" style="margin-left: 1.2rem; margin-right: 1.5rem">
+    <input type="text" pInputText placeholder="Search">
+  </span>
+  <button mat-raised-button class="addBtnColor" (click)="openDialog()">+ Add new user</button>
+</div>
+
+
+<div class="candidateList" >
+
+
+  <div style="display: flex; flex-direction: row; justify-content: flex-start">
+
+  <ngx-datatable class="material" [headerHeight]="50" [rows]="items" [limit]="rowLimit" [footerHeight]="50" [externalPaging]="true"
+    [count]="totalItems" [offset]="offset" ngx-pagination-simple>
+    
+    <ngx-datatable-column prop="username" name="Username" [cellClass]="'column-divider'" >
+      <div style="display: flex; flex-direction: row; justify-content: space-between">
+      <ng-template let-row="row" ngx-datatable-cell-template>
+        <div style="display: flex; align-items: center">
+          <div class="circle">
+            <span class="initials">{{row.username | twoFirstLetters}}</span>
+          </div>
+          <div style="margin-left: 1rem">
+            <div mat-line>{{row.username | titlecase}}</div>
+          </div>
+        </div>
+      </ng-template>
+
+    </div>
+    </ngx-datatable-column>
+    <ngx-datatable-column name="" [cellClass]="'column-divider'"></ngx-datatable-column>
+
+    <ngx-datatable-column prop="email" name="Email" [cellClass]="'column-divider'" [width]="200"></ngx-datatable-column>
+    <ngx-datatable-column name="" [cellClass]="'column-divider'"></ngx-datatable-column>
+
+    <ngx-datatable-column prop="roles[0].name" name="Role" [cellClass]="'column-divider'"></ngx-datatable-column>
+  </ngx-datatable>
+
+
+
+
+  <div class="row-limit-container">
+    <label for="row-limit">Rows per page:</label>
+    <select id="row-limit" [(ngModel)]="rowLimit" (change)="onRowLimitChange()">
+      <option value="5">5</option>
+      <option value="10">10</option>
+      <option value="15">15</option>
+    </select>
+  </div>
+  
+  <pagination-controls (pageChange)="onPageChange($event)" [id]="'user-pagination'"></pagination-controls>
+
+
+  </div>-->

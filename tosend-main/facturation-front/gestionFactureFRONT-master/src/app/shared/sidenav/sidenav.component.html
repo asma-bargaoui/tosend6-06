@@ -1,0 +1,24 @@
+<div class="cards">
+  <div class="buttons">
+    <button *ngIf="notVisibleToUser" class="btn" (click)="navigateToUsers()">
+      <img src="assets/sideBar/Groupe%2010768.png" style="width: 28px" /><span>utilisateurs</span>
+    </button>
+
+    <button *ngIf="notVisibleToUser" class="btn" (click)="navigateToApplications()">
+      <img src="assets/sideBar/Groupe%2010769.png" style="width: 28px" /><span>Applications</span>
+    </button>
+
+    <button *ngIf="notVisibleToUser" class="btn" (click)="navigateToStructure()">
+      <img src="assets/sideBar/Groupe%2010780.png" style="width: 28px" /><span>Structures</span>
+    </button>
+
+    
+
+    <button *ngIf="notVisibleToAdmin" class="btn" (click)="navigateToConventions()">
+      <img src="assets/sideBar/Groupe%2010772.png" style="width: 28px" /><span>Conventions</span>
+    </button>
+    <button *ngIf="notVisibleToAdmin" class="btn" (click)="navigateToFacture()">
+      <img src="assets/sideBar/Groupe%2010769.png" style="width: 28px" /><span>Factures</span>
+    </button>
+  </div>
+</div>

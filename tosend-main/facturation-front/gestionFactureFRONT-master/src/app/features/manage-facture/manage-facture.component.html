@@ -1,0 +1,65 @@
+<div _ngcontent-ng-c1168945719="" style="margin-top: 0.1rem; margin-bottom: -1rem; font-size: large; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: rgb(61, 61, 133);"> <a (click)="home()"> /home</a>/manageFactures </div>
+
+     <br><br>
+     <div class="table-container">
+
+      <table class="table">
+        <div class="table-container">
+          <ngx-datatable class="material" [headerHeight]="50" [rows]="items" [limit]="rowLimit" [footerHeight]="50" [externalPaging]="true"
+            [count]="totalItems" [offset]="offset" (page)="onPageChange($event)">
+        
+            <ngx-datatable-column prop="structureLibelle" name="Structure" class="header-column"></ngx-datatable-column>
+            <ngx-datatable-column prop="status" name="Status" class="header-column"></ngx-datatable-column>
+            <ngx-datatable-column prop="dueDatefct" name="Date d'echeance" class="header-column"></ngx-datatable-column>
+            <ngx-datatable-column prop="amount" name="Montant" class="header-column"></ngx-datatable-column>
+            <ngx-datatable-column prop="period" name="Periode" class="header-column" [width]="200"></ngx-datatable-column>
+            <br><br>
+            <ngx-datatable-column name="Actions" class="header-column" [width]="200">
+              <ng-template let-row="row" ngx-datatable-cell-template>
+                <button (click)="paid(row.id)" class="btn btn-primary"> marquer comme payée</button>
+              </ng-template>
+            </ngx-datatable-column>
+          </ngx-datatable>
+        
+          <div class="container">
+            <div class="row-limit-container">
+              <label for="row-limit"></label>
+              <select id="row-limit" [(ngModel)]="rowLimit" (change)="onRowLimitChange()" class="custom-select">
+                <option value="5">5</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        
+
+
+
+
+
+
+<!--<div class="container">
+  <table class="responsive-table" st-table="allFacture">
+    <thead>
+      <tr class="table-header">
+        <th class="col col-1" st-sort="id">ID</th>
+        <th class="col col-3" st-sort="convention">Convention</th>
+        <th class="col col-3" st-sort="structure">Structure</th>
+        <th class="col col-3" st-sort="dueDatefct">Date d'echeance fct</th>
+        <th class="col col-3" st-sort="amount">Montant</th>
+        <th class="col col-3" st-sort="period">Periode</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr class="smart-table-row" *ngFor="let fact of allFacture">
+        <td class="col col-1">{{ fact.id }}</td>
+        <td class="col col-3" style="text-align: center;">{{ fact.convention }}</td>
+        <td class="col col-3" style="text-align: center;">{{ fact.structure }}</td>
+        <td class="col col-3" style="text-align: center;">{{ fact.dueDatefct }}</td>
+        <td class="col col-3" style="text-align: center;">{{ fact.amount }}</td>
+        <td class="col col-3" style="text-align: center;">{{ fact.period }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>-->

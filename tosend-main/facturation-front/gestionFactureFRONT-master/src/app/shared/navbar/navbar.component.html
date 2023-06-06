@@ -1,0 +1,20 @@
+<mat-toolbar class="nav">
+  <img style="width: 4rem; position: absolute; left: 7rem;" src="assets/logo.png" alt="" (click)="home()">
+    <div style="padding-top: .7rem; display: flex; flex-direction: row">
+       <div class="circle">
+        <span class="initials">{{usernameLoggedIn| twoFirstLetters}}</span>
+      </div>
+      <mat-icon [matMenuTriggerFor]="menu" class="arrowDown"  >keyboard_arrow_down</mat-icon>
+    </div>
+  </mat-toolbar>
+  
+  <mat-menu #menu="matMenu" class="myMenu" xPosition="after">
+  
+    <mat-list> 
+      <mat-list-item (click)="logOut()">
+        <mat-icon mat-list-icon>exit_to_app</mat-icon>
+        <div mat-line>Log Out</div>
+      </mat-list-item>
+    </mat-list>
+  
+  </mat-menu>

@@ -1,0 +1,90 @@
+<div class="container-wrapper">
+  <div class="container"> <h2 class="title">Create New Convention</h2>
+
+  <form [formGroup]="conventionForm" class="form">
+    <mat-horizontal-stepper linear>
+      <mat-step>
+
+        <ng-template matStepLabel>Step 1</ng-template>
+        <div class="form-field" style="display: flex; flex-direction: column; justify-content: flex-start">
+          <label style="text-align:center"><b>Structure:</b></label>
+          <select formControlName="structure" class="select">
+            <option *ngFor="let structure of structureList" [ngValue]="structure.code">{{ structure.libelle }}</option>
+          </select>
+        </div>
+        <br><br>
+        <div class="form-field" style="display: flex; flex-direction: column; justify-content: flex-start">
+          <label  style="text-align:center" ><b>Application:</b></label>
+          <select formControlName="application" class="select">
+            <option *ngFor="let application of applicationList" [ngValue]="application.code" >{{ application.libelle }}</option>
+          </select>
+        </div>
+        <br><br>
+        <div class="button-container">
+          <button mat-button matStepperNext style="color:blue;margin-right:20%" >Next</button>
+        </div>
+      </mat-step>
+
+      
+        <mat-step>
+          <ng-template matStepLabel>Step 2</ng-template>
+        
+          <div class="form-field">
+            <label><b>Nbr_reel :</b></label>
+            <input formControlName="nbr_reel" type="number" pInputText>
+            <mat-error *ngIf="conventionForm.get('nbr_reel')?.hasError('required')">Nbr_reel is required</mat-error>
+            <mat-error *ngIf="conventionForm.errors?.['nbrRange']">Nbr_reel value must be between Nbr_Min and Nbr_Max</mat-error>
+          </div>
+        
+          <div class="form-field">
+            <label><b>Nbr_Min :</b></label>
+            <input formControlName="nbr_Min" type="number" pInputText>
+            <mat-error *ngIf="conventionForm.get('nbr_Min')?.hasError('required')">Nbr_Min is required</mat-error>
+          </div>
+        
+          <div class="form-field">
+            <label><b>Nbr_Max :</b></label>
+            <input formControlName="nbr_Max" type="number" pInputText>
+            <mat-error *ngIf="conventionForm.get('nbr_Max')?.hasError('required')">Nbr_Max is required</mat-error>
+          </div>
+        
+          <div class="button-container">
+            <button mat-button matStepperPrevious style="color:blue;">Previous</button>
+            <button mat-button matStepperNext style="color:blue;" (click)="validateForm()">Next</button>
+          </div>
+        </mat-step>
+        
+      
+
+      <mat-step>
+        <ng-template matStepLabel>Step 3</ng-template>
+        <br><br><br><br>
+        <div class="form-field">
+          <label for="conventionDuration"><b>Durée _du _convention :</b></label>
+          <input formControlName="conventionDuration" type="number" pInputText id="conventionDuration">
+        </div>
+
+        <div class="form-field">
+          <label><b>Date de signature:</b></label>
+          <p-calendar [required]="true" formControlName="dateSignature"></p-calendar>
+        </div>
+        
+          <div class="button-container">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+              <button mat-button matStepperPrevious style="color: blue;">Previous</button>
+              <br><br>
+              <button class="submit-button" style="color: blue; justify-content: center; align-items: center;  transform: translateX(180%);" pButton (click)="submitConvention()" icon="pi pi-check" label="Submit"></button>
+            </div>
+          </div>
+          
+      </mat-step>
+      
+    </mat-horizontal-stepper>
+  
+    
+  
+  </form>
+</div>
+</div>
+
+

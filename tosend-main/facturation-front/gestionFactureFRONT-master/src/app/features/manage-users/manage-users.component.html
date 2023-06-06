@@ -1,0 +1,159 @@
+<div _ngcontent-ng-c1168945719="" style="margin-top: 2.5rem; margin-bottom: -1rem; font-size: large; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: rgb(61, 61, 133);"><a (click)="home()"> home</a>/manageUsers </div>
+<div style="display: flex; justify-content: flex-start; flex-direction: row; margin-top: 2rem">
+
+
+  <mat-form-field>
+    <mat-label>Search</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+  </mat-form-field>
+  <button mat-raised-button class="addBtnColor" (click)="openDialog()" >+ Ajouter nouvelle utilisateur </button></div>
+
+
+  <p-dialog header="Nouvelle utilisateur:"[(visible)]="visible" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
+  [draggable]="false" [resizable]="false">
+<div><br>
+<div>
+<div style="display: flex; justify-content: space-around; flex-direction: row">
+<p-selectButton optionLabel="label" optionValue="value"></p-selectButton>
+</div>
+</div>
+<form [formGroup]="userForm">
+<div style="display: flex; flex-direction: column; color: #065878"><br>
+<div style="display: flex; flex-direction: column; justify-content: space-between">
+
+  <div style="display: flex; flex-direction: column; justify-content: flex-start">
+    <label><b>Nom utilisateur:</b></label><br>
+    <input formControlName="username" type="text" pInputText style="border-radius: 15px">
+  </div>
+  <br>
+  
+  <div style="display: flex; flex-direction: column; justify-content: flex-start">
+    <label><b>Email:</b></label><br>
+    <input formControlName="email" type="text" pInputText style="border-radius: 15px">
+  </div>
+  <br>
+
+  <div style="display: flex; flex-direction: column; justify-content: flex-start">
+    <label><b>Role</b></label><br>
+    <p-dropdown [options]="roles" formControlName="role" optionLabel="name"></p-dropdown>
+  </div>
+  
+  
+  <br>
+  <div style="display: flex; flex-direction: column; justify-content: flex-start">
+    <label><b>mot de passe:</b></label><br>
+    <input formControlName="password" type="password" pPassword style="border-radius: 15px">
+  </div>
+</div>
+<br>
+</div>
+</form>
+
+</div>
+<ng-template pTemplate="footer">
+<button (click)="visible = false" pButton pRipple type="button" icon="pi pi-times" label="Annuler" class="p-button-danger"></button>
+<p-button (click)="submitUser()" icon="pi pi-check" label="enregistrer" class="p-button-text"></p-button>
+</ng-template>
+</p-dialog>
+  <div class="container">
+    <table mat-table [dataSource]="dataSource">
+  
+      <ng-container matColumnDef="username">
+        <th mat-header-cell *matHeaderCellDef> Nom </th>
+        <td mat-cell *matCellDef="let user">{{ user.username }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="email">
+        <th mat-header-cell *matHeaderCellDef> Email </th>
+        <td mat-cell *matCellDef="let user">{{ user.email }}</td>
+      </ng-container>
+  
+      <ng-container matColumnDef="role">
+        <th mat-header-cell *matHeaderCellDef> Role </th>
+        <td mat-cell *matCellDef="let user">{{ user.roles[0].name}}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="Bloquer/Débloquer">
+        <th mat-header-cell *matHeaderCellDef> Bloquer/Débloquer </th>
+        <td mat-cell *matCellDef="let user">
+          <button (click)="toggleBlock(user)" mat-icon-button color="primary">
+            <mat-icon>{{ user.blocked ? 'block' : 'unblock' }}</mat-icon>
+          </button>
+        </td>
+      </ng-container>
+<button (click)="openUpdateDialog(id)" pButton pRipple type="button" icon="pi pi-pencil"
+class="p-button-rounded p-button-warning marginItemsListe" style="font-size: 12rem; margin-top: 1.2rem;"></button>
+  
+      <ng-container matColumnDef="action">
+        
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let user">
+          <button (click)="openDeleteDialog(user.id)" mat-icon-button color="warn">
+            <mat-icon>delete</mat-icon>
+          </button>
+          
+              
+      <p-dialog [(visible)]="delete" header="Confirm Delete" [style]="{width: '40vw', height: '30vh'}">
+        <div> vous les vous vraiment supprimer cet utilisateur ?</div>
+        <ng-template pTemplate="footer">
+          <button  (click)="delete = false" pButton pRipple type="button" icon="pi pi-times" class="p-button-danger" label="Cancel"></button>
+          <button (click) = "deleteUser()" pButton label="delete" ></button>
+        </ng-template>
+      </p-dialog>
+           
+      <button (click)="openUpdateDialog(user.id)" mat-icon-button color="primary">
+        <mat-icon>edit</mat-icon>
+        </button></td></ng-container>
+    
+   
+      <!-- Set the column definitions for the table -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+    </table>
+    
+  </div>
+
+  <p-dialog header="Update User" [(visible)]="update" [modal]="true" [style]="{width: '40vw', height: '60vh'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+    <form [formGroup]="userUpdateForm">
+      <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+        <div style="display: flex; flex-direction: column; align-items: center;">
+          <label class="labelMarge">Username</label>
+          <input formControlName="username" style="width: 22rem;" type="text" pInputText>
+        </div>
+        <br>
+        <div style="display: flex; flex-direction: column; align-items: center;">
+          <label class="labelMarge">Email</label>
+          <input formControlName="email" style="width: 22rem;" type="text" pInputText>
+        </div>
+        
+       
+        
+      </div>
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <label class="labelMarge">Password</label>
+        <input formControlName="password" style="width: 22rem;" type="password" pInputText>
+      </div>
+      <br>
+    </form>
+    <ng-template pTemplate="footer">
+      <button pButton icon="pi pi-times" (click)="update = false" class="p-button-danger" label="Cancel"></button>
+      <button pButton icon="pi pi-check" (click)="updateUser()" label="Submit"></button>
+    </ng-template>
+  </p-dialog>
+
+
+
+  
+  
+      
+          
+           
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+  showFirstLastButtons
+  aria-label="Select page of periodic elements">
+  </mat-paginator>
+
+
+
+      
+

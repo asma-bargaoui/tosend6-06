@@ -1,0 +1,21 @@
+.customShape{
+    height: 2.3rem;
+    width: 2.3rem;
+    border-radius: 0% 100% 0% 100% / 0% 0% 100% 100% ;
+    position: absolute;
+    right: 0;
+    box-shadow: -51px 33px 73px -4px rgba(0,0,0,0.21);
+    display: flex;
+    justify-content: flex-end;
+  }
+  .customShape:hover{
+    cursor: pointer;
+    box-shadow: -51px 79px 118px 8px rgba(0,0,0,0.31);
+  }
+  .menuItems{
+    height: 1.5rem;
+    width: 1.5rem;
+    border-radius: 50%;
+    margin-top: .8rem;
+    margin-right: .4rem
+  }

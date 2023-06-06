@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "@angular/cdk": "^16.0.2",
+    "@angular/material": "^16.0.2",
+    "ngx-highlightjs": "^9.0.0"
+  }
+}

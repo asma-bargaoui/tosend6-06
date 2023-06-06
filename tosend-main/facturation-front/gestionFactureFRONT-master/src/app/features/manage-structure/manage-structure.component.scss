@@ -1,0 +1,377 @@
+.addBtnColor{
+    background-image: linear-gradient(
+        290deg,
+        hsl(197deg 93% 24%) 0%,
+        hsl(206deg 34% 48%) 55%,
+        hsl(213deg 43% 67%) 100%
+    );
+    color: white;
+    border-radius: 10px;
+    font-weight: 5;
+    margin-right: 1.2rem;
+  }
+  
+  .filterBlock{
+    width: 80vw;
+    height: 25vh;
+    margin-top: 2rem;
+    border-radius: 12px;
+    box-shadow: 5px 4px 22px 0px rgba(194, 193, 193, 0.75);
+  
+  }
+  
+  .headClass{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+  
+  ::ng-deep .mat-form-field-outline-start {
+    border-radius: 20px 0 0 20px !important;
+    min-width: 20px !important;
+  }
+  
+  ::ng-deep .mat-form-field-outline-end {
+    border-radius: 0 20px 20px 0 !important;
+  }
+  .filterClass{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+  }
+  
+  .marginItemsListe{
+    margin-top: 2.2rem;margin-left: 4rem;
+    width: 25%;
+  }
+  .marginItemsListe2{
+    margin-left: 4rem;
+    width: 25%;
+    font-weight: bolder;
+    font-size: .8rem;
+  }
+  .marginItemsListeHead{
+    margin-top: 1rem;
+    margin-left: 8rem;
+  }
+  .marginItemS{
+    margin-top: 1rem;
+    margin-left: 7rem;
+  }
+  .noBorder{
+    margin-top: 1.3rem;
+    margin-left: 5rem;
+  }
+  
+  ::ng-deep {
+    .mat-form-field-appearance-outline.noBorder .mat-form-field-outline {
+      color: transparent;
+    }
+  }
+  
+  .circle {
+    margin-top: .4rem;
+    background-color: #ccc;
+    border-radius: 50%;
+    text-align: center;
+    height: 4rem;
+    width: 4rem;
+  }
+  
+  .initials {
+    font-size: 1.5rem; /* 50% of parent */
+    line-height: 1;
+    position: relative;
+    top: 1.4rem; /* 25% of parent */
+  }
+  
+  .candidateList{
+    margin-top: 2rem;
+    margin-left: 2.3rem;
+    width: 80vw;
+    display: flex;
+    justify-content: center;
+    border-radius: 12px;
+    box-shadow: 5px 4px 22px 0px rgba(194, 193, 193, 0.75);
+  }
+  .candidateListHead{
+    margin-top: 2rem;
+    margin-left: 9.3rem;
+    width: 80vw;
+    border-radius: 12px;
+    box-shadow: 5px 4px 22px 0px rgba(194, 193, 193, 0.75);
+  }
+  .example-viewport {
+    height: 77vh;
+    width: 100vw;
+  }
+  
+  .custom-marker {
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  
+  ::ng-deep {
+    .p-timeline-event-content,
+    .p-timeline-event-opposite {
+      line-height: 1;
+    }
+  }
+  
+  @media screen and (max-width: 960px) {
+    ::ng-deep {
+      .customized-timeline {
+        .p-timeline-event:nth-child(even) {
+          flex-direction: row !important;
+  
+          .p-timeline-event-content {
+            text-align: left !important;
+          }
+        }
+  
+        .p-timeline-event-opposite {
+          flex: 0;
+        }
+  
+        .p-card {
+          margin-top: 1rem;
+        }
+      }
+    }
+  }
+  :host ::ng-deep .p-dropdown{
+    width: 22rem;
+  }
+
+  .addBtnColor{
+    background-image: linear-gradient(
+        290deg,
+        hsl(197deg 93% 24%) 0%,
+        hsl(206deg 34% 48%) 55%,
+        hsl(213deg 43% 67%) 100%
+    );
+    color: white;
+    border-radius: 10px;
+    font-weight: 5;
+    margin-right: 1.2rem;
+  }
+  
+  .filterBlock{
+    width: 80vw;
+    height: 25vh;
+    margin-top: 2rem;
+    border-radius: 12px;
+    box-shadow: 5px 4px 22px 0px rgba(194, 193, 193, 0.75);
+  
+  }
+  
+  .headClass{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+  }
+  
+  ::ng-deep .mat-form-field-outline-start {
+    border-radius: 20px 0 0 20px !important;
+    min-width: 20px !important;
+  }
+  
+  ::ng-deep .mat-form-field-outline-end {
+    border-radius: 0 20px 20px 0 !important;
+  }
+  .filterClass{
+    display: flex;
+    justify-content: space-around;
+    flex-direction: row;
+  }
+  
+  .marginItemsListe{
+    margin-top: 2.2rem;margin-left: 4rem;
+    width: 25%;
+  }
+  .marginItemsListe2{
+    margin-left: 4rem;
+    
+    width: 25%;
+  }
+  .marginItemsListeHead{
+    margin-top: 1rem;
+    margin-left: 8rem;
+  }
+  .marginItemS{
+    margin-top: 1rem;
+    margin-left: 7rem;
+  }
+  .noBorder{
+    margin-top: 1.3rem;
+    margin-left: 5rem;
+  }
+  
+  ::ng-deep {
+    .mat-form-field-appearance-outline.noBorder .mat-form-field-outline {
+      color: transparent;
+    }
+  }
+  
+  .circle {
+    margin-top: .4rem;
+    background-color: #ccc;
+    border-radius: 50%;
+    text-align: center;
+    height: 4rem;
+    width: 4rem;
+  }
+  
+  .initials {
+    font-size: 1.5rem; /* 50% of parent */
+    line-height: 1;
+    position: relative;
+    top: 1.4rem; /* 25% of parent */
+  }
+  
+  .candidateList{
+    margin-top: 2rem;
+    margin-left: 2.3rem;
+    width: 80vw;
+    display: flex;
+    justify-content: center;
+    border-radius: 12px;
+    box-shadow: 5px 4px 22px 0px rgba(194, 193, 193, 0.75);
+  }
+  .candidateListHead{
+    margin-top: 2rem;
+    margin-left: 9.3rem;
+    width: 80vw;
+    border-radius: 12px;
+    box-shadow: 5px 4px 22px 0px rgba(194, 193, 193, 0.75);
+  }
+  .example-viewport {
+    height: 77vh;
+    width: 100vw;
+  }
+  
+  .custom-marker {
+    display: flex;
+    width: 2rem;
+    height: 2rem;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    border-radius: 50%;
+    z-index: 1;
+  }
+  
+  ::ng-deep {
+    .p-timeline-event-content,
+    .p-timeline-event-opposite {
+      line-height: 1;
+    }
+  }
+  
+  @media screen and (max-width: 960px) {
+    ::ng-deep {
+      .customized-timeline {
+        .p-timeline-event:nth-child(even) {
+          flex-direction: row !important;
+  
+          .p-timeline-event-content {
+            text-align: left !important;
+          }
+        }
+  
+        .p-timeline-event-opposite {
+          flex: 0;
+        }
+  
+        .p-card {
+          margin-top: 1rem;
+        }
+      }
+    }
+  }
+
+  body {
+    font-family: 'lato', sans-serif;
+  }
+  .container {
+    max-width: 1000px;
+    margin-left: -1.8rem;
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+  
+  h2 {
+    font-size: 26px;
+    margin: 20px 0;
+    text-align: center;
+    small {
+      font-size: 0.5em;
+    }
+  }
+  
+  .responsive-table {
+    li {
+      border-radius: 6px;
+      padding: 25px 30px;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 25px;
+    }
+    .table-header {
+      background-color: #547FA2;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .table-row {
+      background-color: #ffffff;
+      box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
+    }
+    .col-1 {
+      flex-basis: 10%;
+    }
+    
+    .col-3 {
+      flex-basis: 25%;
+    }
+    .col-4 {
+      flex-basis: 25%;
+    }
+    
+    @media all and (max-width: 767px) {
+      .table-header {
+        display: none;
+      }
+    
+      li {
+        display: block;
+      }
+      .col {
+        
+        flex-basis: 100%;
+        
+      }
+      .col {
+        display: flex;
+        padding: 10px 0;
+        &:before {
+          color: #6C7A89;
+          padding-right: 10px;
+          content: attr(data-label);
+          flex-basis: 50%;
+          text-align: right;
+        }
+      }
+    }
+  }
+
+  :host ::ng-deep .p-button.p-button-icon-only.p-button-rounded{
+    height: 2rem;
+    width: 2rem;
+  }

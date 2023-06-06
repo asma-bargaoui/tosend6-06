@@ -1,0 +1,122 @@
+<div style="display: flex; justify-content: flex-start; flex-direction: row; margin-top: 2rem">
+  <mat-form-field>
+  <mat-label>Search</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+  </mat-form-field>
+  <button mat-raised-button class="addBtnColor" (click)="openDialog()">+ Ajouter nouvelle Structure</button>
+</div>
+
+<div class="container">
+  <table mat-table [dataSource]="structureList">
+    <ng-container matColumnDef="code">
+      <th mat-header-cell *matHeaderCellDef>Code structure</th>
+      <td mat-cell *matCellDef="let st">{{ st.code }}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="libelle">
+      <th mat-header-cell *matHeaderCellDef>Libellé structure</th>
+      <td mat-cell *matCellDef="let st" style="text-align: center;">{{ st.libelle }}</td>
+    </ng-container>
+  
+    <ng-container matColumnDef="ministere">
+      <th mat-header-cell *matHeaderCellDef>Ministère</th>
+      <td mat-cell *matCellDef="let st" style="text-align: center;">{{ st.ministere?.libelle }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let app">
+        <!-- Action buttons for each row -->
+
+        <button mat-icon-button color="primary" (click)="openUpdateDialog(app)">
+          <mat-icon>edit</mat-icon>
+        </button>
+
+        <button mat-icon-button color="warn" (click)="openDeleteDialog(app.id)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns;"></tr>
+    <tr mat-row *matRowDef="let st; columns: displayedColumns;"></tr>
+    
+  </table>
+  <mat-paginator [pageSizeOptions]="[5, 10, 20]"
+showFirstLastButtons
+aria-label="Select page of periodic elements">
+</mat-paginator>
+</div>
+
+<p-dialog [(visible)]="delete" header="Confirm Delete" [style]="{width: '40vw', height: '30vh'}">
+  <div> vous les vous vraiment supprimer cette structure ?</div>
+  <ng-template pTemplate="footer">
+    <button (click)="delete = false" pButton pRipple type="button" icon="pi pi-times" class="p-button-danger" label="Cancel"></button>
+    <button (click)="deleteStructure()" pButton label="delete"></button>
+  </ng-template>
+</p-dialog>
+
+
+<p-dialog header="Nouvelle Structure" [(visible)]="visible" [modal]="true" [style]="{width: '40vw', height: '75vh'}"
+  [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+  <form [formGroup]="structureForm">
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <label class="labelMarge">Code du structure</label>
+        <input formControlName="code" style="width: 22rem;" type="text" pInputText>
+      </div>
+      <br>
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <label class="labelMarge">Libellé du structure</label>
+        <input formControlName="libelle" style="width: 22rem;" type="text" pInputText>
+      </div>
+      <br>
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <label class="labelMarge">Ministere</label>
+        <p-dropdown formControlName="ministere" [options]="ministereList" optionLabel="libelle">
+          <ng-template let-option pTemplate="selectedItem">
+            <div *ngIf="option === null">Selected Ministere</div>
+            <div *ngIf="option !== null">{{ option.libelle }}</div>
+          </ng-template>
+  
+          </p-dropdown>
+      </div>
+    </div>
+    <br>
+  </form>
+  <ng-template pTemplate="footer">
+    <button pButton icon="pi pi-times" class="p-button-danger" label="Cancel"></button>
+    <button (click)="submitStructure()" pButton icon="pi pi-check" label="Submit"></button>
+  </ng-template>
+</p-dialog>
+
+<p-dialog header="Update Structure" [(visible)]="update" [modal]="true" [style]="{width: '40vw', height: '75vh'}"
+  [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+  <form [formGroup]="structureUpdateForm">
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <label class="labelMarge">Code du structure</label>
+        <input formControlName="code" style="width: 22rem;" type="text" pInputText>
+      </div>
+      <br>
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <label class="labelMarge">Libellé du structure</label>
+        <input formControlName="libelle" style="width: 22rem;" type="text" pInputText>
+      </div>
+      <br>
+      <div style="display: flex; flex-direction: column; align-items: center;">
+        <label class="labelMarge">Ministere</label>
+        <p-dropdown formControlName="ministere" [options]="ministereList" optionLabel="libelle">
+          
+        </p-dropdown>
+      </div>
+
+    </div>
+    <br>
+  </form>
+  <ng-template pTemplate="footer">
+    <button pButton icon="pi pi-times" class="p-button-danger" label="Cancel"></button>
+    <button (click)="updateStructure()" pButton icon="pi pi-check" label="Submit"></button>
+  </ng-template>
+</p-dialog>
+

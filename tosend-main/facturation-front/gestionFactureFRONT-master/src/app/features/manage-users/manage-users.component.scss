@@ -1,0 +1,31 @@
+.table-container {
+  max-width: 600px; /* Adjust the value as per your requirements */
+  margin: 0 auto; /* Center the table horizontally */
+}
+
+.addBtnColor{margin-left: 10%;}
+.custom-table {
+  width: 100%;
+}
+
+/* Optionally, you can style the table rows and cells for a more compact look */
+.custom-table mat-row,
+.custom-table mat-header-row {
+  height: 700px;
+}
+
+.custom-table mat-cell,
+.custom-table mat-header-cell {
+  padding: 1px;
+}
+
+.error-message {
+  color: rgb(208, 21, 21);
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.error-message i {
+  margin-right: 5px;
+  color: rgb(208, 21, 21);
+}

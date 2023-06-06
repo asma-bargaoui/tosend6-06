@@ -1,0 +1,51 @@
+
+<div>
+
+  <form [formGroup]="loginForm">
+    <div style="display: flex; flex-direction:column; justify-content: center; align-items: center; height: 100vh ">
+
+      <div style="display: flex; flex-direction: column">
+        <label>  nom utilisateur:</label>
+        <mat-form-field class="example-full-width" appearance="outline">
+          <input formControlName="username" matInput>
+        </mat-form-field>
+         <div *ngIf="loginForm.get('username')!.errors" style="margin-top: -1.5rem">
+          <small style="color: red; margin-top: -1.5rem" *ngIf="loginForm.get('username')!.hasError('required') && loginForm.get('username')!.touched ">Field username is required</small>
+        </div> 
+      </div>
+      <div style="display: flex; flex-direction: column">
+        <label>mot de passe </label>
+        <mat-form-field class="example-full-width" appearance="outline">
+
+          <input formControlName="password" matInput type="password"  ngModel minlength="6">
+        </mat-form-field>
+         <small style="color: red; margin-top: -1.5rem" *ngIf="loginForm.get('password')?.hasError('minlength')">Field password must contain at least 6 characters</small> 
+
+      </div>
+      <button (click)="login()" class="btn blue" mat-raised-button  >Connectez-vous</button>
+      <div *ngIf="errorMessage" style="color: red; margin-top: 1rem;">{{ errorMessage }}</div>
+    </div>
+   
+    <div> 
+    </div>
+    
+<img src="../../assets/loginPage/Groupe%2010743.png" style="position: absolute; top: -7rem; right: -23.8rem" >
+
+
+
+ <!--<p-toast position="center" key="failed"  [baseZIndex]="5000">
+  <ng-template pTemplate="message">
+    <div class="p-flex p-flex-column" style="flex: 1; display: flex; flex-direction: column">
+      <div class="p-text-center" style="text-align: center">
+        <i class="pi pi-times-circle" style="font-size: 3rem"></i>
+        <h3>Authentication failed !!</h3>
+        <h4>Verify your credentials.</h4>
+      </div>
+      <div class="p-grid p-fluid">
+        <div class="p-col-5">
+          <button (click)="OnConfirm()" type="button" pButton label="OK" class="p-button-danger"></button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</p-toast> -->
