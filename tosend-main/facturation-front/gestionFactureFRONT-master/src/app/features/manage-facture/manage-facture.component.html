@@ -1,4 +1,5 @@
-<div _ngcontent-ng-c1168945719="" style="margin-top: 0.1rem; margin-bottom: -1rem; font-size: large; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: rgb(61, 61, 133);"> <a (click)="home()"> /home</a>/manageFactures </div>
+<div _ngcontent-ng-c1168945719="" style="margin-top: 0.1rem; margin-bottom: -1rem; font-size: large; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: rgb(61, 61, 133);"> <a (click)="home()"> home</a>/gestion des factures </div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 
      <br><br>
      <div class="table-container">
@@ -14,9 +15,11 @@
             <ngx-datatable-column prop="amount" name="Montant" class="header-column"></ngx-datatable-column>
             <ngx-datatable-column prop="period" name="Periode" class="header-column" [width]="200"></ngx-datatable-column>
             <br><br>
-            <ngx-datatable-column name="Actions" class="header-column" [width]="200">
+            <ngx-datatable-column name="" class="header-column" [width]="200">
               <ng-template let-row="row" ngx-datatable-cell-template>
-                <button (click)="paid(row.id)" class="btn btn-primary"> marquer comme payée</button>
+                <button (click)="paid(row.id)" class="btn btn-primary custom-button">
+                  <i class="fas fa-check"></i>
+                </button>
               </ng-template>
             </ngx-datatable-column>
           </ngx-datatable>

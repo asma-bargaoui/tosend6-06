@@ -1,11 +1,326 @@
-<div class="container-wrapper">
+<div style="margin-top: 2.5rem; margin-bottom: -1rem; font-size: large; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: rgb(61, 61, 133);">
+  <a ></a>/Convention
+</div>
+
+<div style="display: flex; justify-content: flex-end; margin-top: 2rem;">
+  <mat-form-field>
+    <mat-label>Search</mat-label>
+    <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
+  </mat-form-field>
+  <button mat-raised-button class="addBtnColor" (click)="openDialog()">+ Convention</button>
+  <p-dialog header="Fichier Convention" [(visible)]="visible" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000">
+    <div class="container-wrapper">
+      <div class="container">
+        
+        <form [formGroup]="conventionForm" class="form">
+          <mat-horizontal-stepper linear>
+            <mat-step>
+  
+              <ng-template matStepLabel>première étape</ng-template>
+              <div class="form-field" style="display: flex; flex-direction: column; justify-content: flex-start">
+                <label style="text-align:center"><b>Structure:</b></label>
+                <select formControlName="structure" class="select">
+                  <option *ngFor="let structure of structureList" [ngValue]="structure.code">{{ structure.libelle }}</option>
+                </select>
+              </div>
+              <br><br>
+              <div class="form-field" style="display: flex; flex-direction: column; justify-content: flex-start">
+                <label  style="text-align:center" ><b>Application:</b></label>
+                <select formControlName="application" class="select">
+                  <option *ngFor="let application of applicationList" [ngValue]="application.code">{{ application.libelle }}</option>
+                </select>
+              </div>
+              <br><br>
+              <div class="button-container">
+                <button mat-button matStepperNext style="color:blue;margin-right:20%" >Next</button>
+              </div>
+            </mat-step>
+  
+  
+            <mat-step>
+              <ng-template matStepLabel>Step 2</ng-template>
+            
+              <div class="form-field">
+                <label><b>Nbr_reel:</b></label>
+                <input formControlName="nbr_reel" type="number" pInputText>
+              </div>
+              <div *ngIf="conventionForm.get('nbr_reel')!.errors && conventionForm.get('nbr_reel')!.touched" class="error-message">
+                <small *ngIf="conventionForm.get('nbr_reel')!.hasError('required')">    nbr_reel is required     </small>
+              </div>
+            
+              <div class="form-field">
+                <label><b>Nbr_Min:</b></label>
+                <input formControlName="nbr_Min" type="number" pInputText>
+                </div>
+                <div *ngIf="conventionForm.get('nbr_Min')!.errors && conventionForm.get('nbr_Min')!.touched" class="error-message">
+                  <small *ngIf="conventionForm.get('nbr_Min')!.hasError('required')">    nbr_Min is required     </small>
+              </div>
+            
+              <div class="form-field">
+                <label><b>Nbr_Max:</b></label>
+                <input formControlName="nbr_Max" type="number" pInputText>
+                </div>
+                <mat-error *ngIf="conventionForm.get('nbr_Max')?.hasError('required')" class="error-message"> Nbr_Max is required</mat-error>
+           
+                <div *ngIf="errorMessage" class="error-message">
+                  {{ errorMessage }}
+                </div>
+              <div class="button-container">
+                <button mat-button matStepperPrevious style="color:blue;">Previous</button>
+                <button mat-button matStepperNext style="color:blue;" (click)="validateForm()">Next</button>
+              </div>
+            </mat-step>
+  
+  
+            <mat-step>
+              <ng-template matStepLabel>troisieme étape</ng-template>
+              <br><br><br><br>
+              <div class="form-field">
+                <label for="conventionDuration"><b>Durée _du _convention :</b></label>
+                <input formControlName="conventionDuration" type="number" pInputText id="conventionDuration">
+              </div>
+  
+              <div class="form-field">
+                <label><b>Date de signature:</b></label>
+                <p-calendar [required]="true" formControlName="dateSignature"></p-calendar>
+              </div>
+  
+              <div class="button-container">
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                  <button mat-button matStepperPrevious style="color: blue;">Previous</button>
+                  <br><br>
+                  <button class="submit-button" style="color: blue; justify-content: center; align-items: center; transform: translateX(180%);" pButton (click)="submitConvention()" icon="pi pi-check" label="Submit"></button>
+                </div>
+              </div>
+  
+            </mat-step>
+  
+          </mat-horizontal-stepper>
+  
+  
+  
+        </form>
+      </div>
+    </div>
+  </p-dialog>
+</div>
+
+<div class="container">
+  <table mat-table [dataSource]="dataSource">
+
+    <ng-container matColumnDef="application">
+      <th mat-header-cell *matHeaderCellDef>Application</th>
+      <td mat-cell *matCellDef="let convention">{{ convention.application.libelle }} ({{ convention.application.price }})</td>
+    </ng-container>
+
+    <ng-container matColumnDef="structure">
+      <th mat-header-cell *matHeaderCellDef>Structure</th>
+      <td mat-cell *matCellDef="let convention">{{ convention.structure.libelle }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="nbr_reel">
+      <th mat-header-cell *matHeaderCellDef>nbr_reel</th>
+      <td mat-cell *matCellDef="let convention">{{ convention.nbr_reel }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="nbr_Min">
+      <th mat-header-cell *matHeaderCellDef>nbr_Min</th>
+      <td mat-cell *matCellDef="let convention">{{ convention.nbr_Min }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="nbr_Max">
+      <th mat-header-cell *matHeaderCellDef>nbr_Max</th>
+      <td mat-cell *matCellDef="let convention">{{ convention.nbr_Max }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="total_amount">
+      <th mat-header-cell *matHeaderCellDef>Total Amount</th>
+      <td mat-cell *matCellDef="let convention">{{ convention.total_amount }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dateSignature">
+      <th mat-header-cell *matHeaderCellDef>dateSignature</th>
+      <td mat-cell *matCellDef="let convention">{{ convention.dateSignature }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="conventionDuration">
+      <th mat-header-cell *matHeaderCellDef>conventionDuration</th>
+      <td mat-cell *matCellDef="let convention">{{ convention.conventionDuration }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="dueDate">
+      <th mat-header-cell *matHeaderCellDef>Due Date</th>
+      <td mat-cell *matCellDef="let convention">{{ convention.dueDate }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="action">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let convention">
+        <button (click)="openDeleteDialog(convention.id)" mat-icon-button color="warn">
+          <mat-icon>delete</mat-icon>
+        </button>
+
+        <p-dialog [(visible)]="delete" header="Confirm Delete" [style]="{width: '40vw', height: '30vh'}">
+          <div>voulez-vous vraiment supprimer cette Convention ?</div>
+          <ng-template pTemplate="footer">
+            <button (click)="delete = false" pButton pRipple type="button" icon="pi pi-times" class="p-button-danger" label="Cancel"></button>
+            <button (click)="deleteConvention()" pButton label="delete"></button>
+          </ng-template>
+        </p-dialog>
+
+        <button (click)="openUpdateDialog(convention)" mat-icon-button color="primary">
+          <mat-icon>edit</mat-icon>
+        </button>
+        
+        <p-dialog header="Fichier Convention" [(visible)]="visible" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000">
+          <div class="container-wrapper">
+            <div class="container">
+              <form [formGroup]="conventionForm" class="form">
+                <mat-horizontal-stepper linear>
+                  <mat-step>
+                    <ng-template matStepLabel>première étape</ng-template>
+                    <div class="form-field" style="display: flex; flex-direction: column; justify-content: flex-start">
+                      <label style="text-align:center"><b>Structure:</b></label>
+                      <select formControlName="structure" class="select">
+                        <option *ngFor="let structure of structureList" [value]="structure.code">{{ structure.libelle }}</option>
+                      </select>
+                    </div>
+                    <br><br>
+                    <div class="form-field" style="display: flex; flex-direction: column; justify-content: flex-start">
+                      <label  style="text-align:center" ><b>Application:</b></label>
+                      <select formControlName="application" class="select">
+                        <option *ngFor="let application of applicationList" [value]="application.code">{{ application.libelle }}</option>
+                      </select>
+                    </div>
+                    <br><br>
+                    <div class="button-container">
+                      <button mat-button matStepperNext color="primary">Next</button>
+                    </div>
+                  </mat-step>
+        
+                  <mat-step>
+                    <ng-template matStepLabel>deuxième etape</ng-template>
+                    <div class="form-field">
+                      <label><b>Nbr_reel :</b></label>
+                      <input formControlName="nbr_reel" type="number" pInputText>
+                      <mat-error *ngIf="conventionForm.get('nbr_reel')?.hasError('required')">Nbr_reel is required</mat-error>
+                      <mat-error *ngIf="conventionForm.errors?.['nbrRange']">Nbr_reel value must be between Nbr_Min and Nbr_Max</mat-error>
+                    </div>
+                    <div class="form-field">
+                      <label><b>Nbr_Min :</b></label>
+                      <input formControlName="nbr_Min" type="number" pInputText>
+                      <mat-error *ngIf="conventionForm.get('nbr_Min')?.hasError('required')">Nbr_Min is required</mat-error>
+                    </div>
+                    <div class="form-field">
+                      <label><b>Nbr_Max :</b></label>
+                      <input formControlName="nbr_Max" type="number" pInputText>
+                      <mat-error *ngIf="conventionForm.get('nbr_Max')?.hasError('required')">Nbr_Max is required</mat-error>
+                    </div>
+                    <div class="button-container">
+                      <button mat-button matStepperPrevious color="primary">Previous</button>
+                      <button mat-button matStepperNext color="primary" (click)="validateForm()">Next</button>
+                    </div>
+                  </mat-step>
+        
+                  <mat-step>
+                    <ng-template matStepLabel>troisieme étape</ng-template>
+                    <br><br><br><br>
+                    <div class="form-field">
+                      <label for="conventionDuration"><b>Durée _du _convention :</b></label>
+                      <input formControlName="conventionDuration" type="number" pInputText id="conventionDuration">
+                    </div>
+                    <div class="form-field">
+                      <label><b>Date de signature:</b></label>
+                      <p-calendar [required]="true" formControlName="dateSignature"></p-calendar>
+                    </div>
+                    <div class="button-container">
+                      <div style="display: flex; flex-direction: column; align-items: center;">
+                        <button mat-button matStepperPrevious color="primary">Previous</button>
+                        <br><br>
+                        <button class="submit-button" pButton type="submit" icon="pi pi-check" label="Submit" (click)="updateConvention()"></button>
+                      </div>
+                    </div>
+                  </mat-step>
+                </mat-horizontal-stepper>
+              </form>
+            </div>
+          </div>
+        </p-dialog>
+      </td>
+    </ng-container>
+
+    <!-- Set the column definitions for the table -->
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+</div>
+
+<mat-paginator   aria-label="Select page of periodic elements"></mat-paginator>
+
+
+
+      
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--<div class="container-wrapper">
   <div class="container"> <h2 class="title">Create New Convention</h2>
 
   <form [formGroup]="conventionForm" class="form">
     <mat-horizontal-stepper linear>
       <mat-step>
 
-        <ng-template matStepLabel>Step 1</ng-template>
+        <ng-template matStepLabel>première étape</ng-template>
         <div class="form-field" style="display: flex; flex-direction: column; justify-content: flex-start">
           <label style="text-align:center"><b>Structure:</b></label>
           <select formControlName="structure" class="select">
@@ -27,7 +342,7 @@
 
       
         <mat-step>
-          <ng-template matStepLabel>Step 2</ng-template>
+          <ng-template matStepLabel>deuxième etape</ng-template>
         
           <div class="form-field">
             <label><b>Nbr_reel :</b></label>
@@ -57,7 +372,7 @@
       
 
       <mat-step>
-        <ng-template matStepLabel>Step 3</ng-template>
+        <ng-template matStepLabel>troisieme étape</ng-template>
         <br><br><br><br>
         <div class="form-field">
           <label for="conventionDuration"><b>Durée _du _convention :</b></label>
@@ -85,6 +400,6 @@
   
   </form>
 </div>
-</div>
+</div>-->
 
 

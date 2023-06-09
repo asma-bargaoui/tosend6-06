@@ -30,10 +30,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     ManageStructureComponent,
     ManageUsersComponent,
     GraphesComponent,
-    
   ],
   imports: [
-    
     CommonModule,
     FeaturesRoutingModule,
     SharedModule,
@@ -43,9 +41,6 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     NgxPaginationModule ,
     MatPaginatorModule,
     MatTableModule,
-    
-  
-    
     
   ],
   providers: [

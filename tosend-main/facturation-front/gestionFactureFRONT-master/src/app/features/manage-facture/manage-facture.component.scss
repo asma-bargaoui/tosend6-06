@@ -14,6 +14,17 @@
   justify-content: center;
   padding-bottom: 95%;
 }
+.custom-button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  transition: background-color 0.3s ease;
+}
+
+.custom-button:hover {
+  background-color: #0056b3;
+}
 
 .pg
  {
@@ -53,13 +64,15 @@ label {
 }
 .table-container {
   width: 100%;
-  margin-bottom: 20px;
+  margin-bottom: 5%;
+  background-color: #fff;
+  margin-right: 40%;
+  margin-left: 2%;
+  padding-left: 5%;
+  margin: auto;
 }
 
-.table {
-  width: 100%;
-  border-collapse: collapse;
-}
+
 
 .table th,
 .table td {

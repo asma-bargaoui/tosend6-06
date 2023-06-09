@@ -76,8 +76,8 @@
       <ng-container matColumnDef="Bloquer/Débloquer">
         <th mat-header-cell *matHeaderCellDef> Bloquer/Débloquer </th>
         <td mat-cell *matCellDef="let user">
-          <button (click)="toggleBlock(user)" mat-icon-button color="primary">
-            <mat-icon>{{ user.blocked ? 'block' : 'unblock' }}</mat-icon>
+          <button (click)="toggleBlock(user)" [ngClass]="user.blocked ? 'inactive-button' : 'active-button'">
+            {{ user.blocked ? 'Inactive' : 'Active' }}
           </button>
         </td>
       </ng-container>
@@ -94,7 +94,7 @@ class="p-button-rounded p-button-warning marginItemsListe" style="font-size: 12r
           
               
       <p-dialog [(visible)]="delete" header="Confirm Delete" [style]="{width: '40vw', height: '30vh'}">
-        <div> vous les vous vraiment supprimer cet utilisateur ?</div>
+        <div> voulez-vous vraiment supprimer cet utilisateur ?</div>
         <ng-template pTemplate="footer">
           <button  (click)="delete = false" pButton pRipple type="button" icon="pi pi-times" class="p-button-danger" label="Cancel"></button>
           <button (click) = "deleteUser()" pButton label="delete" ></button>

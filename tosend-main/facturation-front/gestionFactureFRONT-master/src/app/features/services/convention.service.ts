@@ -12,20 +12,28 @@ export class ConventionService {
  
   constructor(private http: HttpClient) { }
 
- // getAllConvention():Observable<any[]>{
-   // return this.http.get<any[]>(endpoint.conventionEndpoint+"/getAll")
- // }
+ 
+  createConvention(convention: any): Observable<any> {
+    return this.http.post<any>(`${endpoint.conventionEndpoint}/create`, convention);
+  }
 
-  createConvention(convention: any):Observable<any>{
-    return this.http.post<any>(`${endpoint.conventionEndpoint}/create`, convention)
+  updateConvention(conventionId: number, convention: any): Observable<any> {
+    return this.http.put<any>(`${endpoint.conventionEndpoint}/${conventionId}`, convention);
+  }
+
+  deleteConvention(conventionId: number): Observable<any> {
+    return this.http.delete<any>(`${endpoint.conventionEndpoint}/${conventionId}`);
+  }
+
+  getConventionsByUser(): Observable<any[]> {
+    return this.http.get<any[]>(`${endpoint.conventionEndpoint}/user-convention`);
   }
 
   getApplication(): Observable<any[]> {
-    return this.http.get<any[]>(endpoint.conventionEndpoint + '/applications');
+    return this.http.get<any[]>(`${endpoint.conventionEndpoint}/applications`);
   }
 
   getAllStructures(): Observable<any[]> {
-    return this.http.get<any[]>(endpoint.conventionEndpoint + '/structures');
+    return this.http.get<any[]>(`${endpoint.conventionEndpoint}/structures`);
   }
-  
 }

@@ -2,7 +2,7 @@
 .nav {
     background-color: rgb(13, 5, 122);
     height: 10vh;
-    box-shadow: 2.5px 2.5px 10px 0 rgba(0, 0, 0, 0.11);
+    box-shadow: 2.5px 2.5px 10px 0 rgba(249, 242, 242, 0.873);
     display: flex;
     justify-content: flex-end;
     position: relative;
@@ -137,7 +137,7 @@
     justify-content: space-around;
   }
   mat-list-item:hover{
-    background-color: rgba(118, 145, 156, 0.14);
+    background-color: rgba(235, 238, 239, 0.974);
     cursor: pointer;
   }
   ::ng-deep .mat-menu-panel {

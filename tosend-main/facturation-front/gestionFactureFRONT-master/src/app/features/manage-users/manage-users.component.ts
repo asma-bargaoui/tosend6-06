@@ -46,6 +46,7 @@ export class ManageUsersComponent implements OnInit, AfterViewInit {
     private userService: UserService,
     public dialog: MatDialog,
     private router: Router,
+    
 
   ) {}
 
@@ -225,7 +226,6 @@ export class ManageUsersComponent implements OnInit, AfterViewInit {
   openDeleteDialog(id: string){
     this.delete= true;
     this.id = id;
-    
     
   }
 

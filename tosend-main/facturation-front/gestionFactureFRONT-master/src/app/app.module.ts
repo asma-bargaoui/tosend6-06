@@ -18,7 +18,6 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { RouterModule, Routes } from '@angular/router';
 
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -26,7 +25,6 @@ import { RouterModule, Routes } from '@angular/router';
   ],
   imports: [
     BrowserModule,
-   
     RouterModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -35,6 +33,7 @@ import { RouterModule, Routes } from '@angular/router';
     FeaturesModule,
     NgxPaginationModule,
    // Chart,
+   
   ],
   providers: [
     {
