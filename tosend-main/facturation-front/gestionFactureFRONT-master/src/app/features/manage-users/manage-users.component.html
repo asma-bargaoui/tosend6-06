@@ -1,12 +1,16 @@
-<div _ngcontent-ng-c1168945719="" style="margin-top: 2.5rem; margin-bottom: -1rem; font-size: large; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: rgb(61, 61, 133);"><a (click)="home()"> home</a>/manageUsers </div>
-<div style="display: flex; justify-content: flex-start; flex-direction: row; margin-top: 2rem">
+<div class="containerhead">
+  <div class="title">
+    <a>Liste des Utilisateurs</a>
+  </div>
+  
+  <div style="display: flex; justify-content: flex-start; flex-direction: row; margin-top: 2rem">
 
 
   <mat-form-field>
     <mat-label>Search</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
   </mat-form-field>
-  <button mat-raised-button class="addBtnColor" (click)="openDialog()" >+ Ajouter nouvelle utilisateur </button></div>
+  <button mat-raised-button class="ConventionBtn" (click)="openDialog()" >+ utilisateur </button></div>
 
 
   <p-dialog header="Nouvelle utilisateur:"[(visible)]="visible" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
@@ -59,8 +63,13 @@
     <table mat-table [dataSource]="dataSource">
   
       <ng-container matColumnDef="username">
-        <th mat-header-cell *matHeaderCellDef> Nom </th>
+        <th mat-header-cell *matHeaderCellDef> Login </th>
         <td mat-cell *matCellDef="let user">{{ user.username }}</td>
+      </ng-container>
+
+      <ng-container matColumnDef="name">
+        <th mat-header-cell *matHeaderCellDef>Nom</th>
+        <td mat-cell *matCellDef="let row">{{ row.name }}</td>
       </ng-container>
   
       <ng-container matColumnDef="email">
@@ -74,13 +83,14 @@
       </ng-container>
 
       <ng-container matColumnDef="Bloquer/Débloquer">
-        <th mat-header-cell *matHeaderCellDef> Bloquer/Débloquer </th>
+        <th mat-header-cell *matHeaderCellDef> </th>
         <td mat-cell *matCellDef="let user">
           <button (click)="toggleBlock(user)" [ngClass]="user.blocked ? 'inactive-button' : 'active-button'">
             {{ user.blocked ? 'Inactive' : 'Active' }}
           </button>
         </td>
       </ng-container>
+
 <button (click)="openUpdateDialog(id)" pButton pRipple type="button" icon="pi pi-pencil"
 class="p-button-rounded p-button-warning marginItemsListe" style="font-size: 12rem; margin-top: 1.2rem;"></button>
   

@@ -6,6 +6,8 @@ import { ManageFactureComponent } from './manage-facture/manage-facture.componen
 import { ManageConventionComponent } from './manage-convention/manage-convention.component';
 import { ManageStructureComponent } from './manage-structure/manage-structure.component';
 import { ManageApplicationComponent } from './manage-application/manage-application.component';
+import { ManageCalendrierComponent } from './manage-calendrier/manage-calendrier.component';
+import { ManageCompteComponent } from './manage-compte/manage-compte.component';
 import { HomeComponent } from './home/home.component';
 import { LoginComponent } from '../auth/login/login.component';
 import { GraphesComponent } from '../graphes/graphes.component';
@@ -45,6 +47,16 @@ const routes: Routes = [
   {
     path: "Graphes",
     component: GraphesComponent
+  },
+
+  {
+    path: "manageCalendrier",
+    component: ManageCalendrierComponent
+  },
+
+  {
+    path: "manageCompte",
+    component: ManageCompteComponent
   },
 ];
 

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ApplicationService } from '../services/application.service';
 import { JwtHelperService } from '@auth0/angular-jwt';
@@ -33,7 +33,9 @@ logs: string[] = [];
 
   displayedColumns: string[] = ['code', 'libelle', 'prix', 'action' ];
   dataSource = new MatTableDataSource<any>();
-
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
+ 
 
   constructor(private dialog: MatDialog,private router: Router, private fb: FormBuilder, private applicationService: ApplicationService, private dialogService: DialogService){}
  
@@ -48,6 +50,15 @@ logs: string[] = [];
     this.initForm()
     this.initUpdateForm()
   }
+
+  
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.fetchData();
+  }
+
+
+
   fetchData() {
     this.applicationService.getAllApplications().subscribe(
       (data: any[]) => {

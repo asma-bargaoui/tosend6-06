@@ -5,6 +5,7 @@ import { HomeComponent } from './home/home.component';
 import { LandingPageComponent } from './landing-page/landing-page.component';
 import { ManageApplicationComponent } from './manage-application/manage-application.component';
 import { ManageConventionComponent } from './manage-convention/manage-convention.component';
+import { ManageCalendrierComponent } from './manage-calendrier/manage-calendrier.component';
 import { ManageStructureComponent } from './manage-structure/manage-structure.component';
 import { ManageUsersComponent } from './manage-users/manage-users.component';
 import { ManageFactureComponent } from './manage-facture/manage-facture.component';
@@ -20,12 +21,17 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 
 
+
+
+
+
 @NgModule({
   declarations: [
     HomeComponent, 
     LandingPageComponent,
     ManageApplicationComponent,
     ManageConventionComponent,
+    ManageCalendrierComponent,
     ManageFactureComponent, 
     ManageStructureComponent,
     ManageUsersComponent,
@@ -41,6 +47,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     NgxPaginationModule ,
     MatPaginatorModule,
     MatTableModule,
+    FormsModule,
     
   ],
   providers: [

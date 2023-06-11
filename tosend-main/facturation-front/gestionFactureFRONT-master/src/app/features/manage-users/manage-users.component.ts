@@ -18,7 +18,7 @@ import { Router } from '@angular/router';
 export class ManageUsersComponent implements OnInit, AfterViewInit {
   
 
-  displayedColumns: string[] = ['username', 'email', 'role', 'action', 'Bloquer/Débloquer'];
+  displayedColumns: string[] = ['username','name', 'email', 'role', 'action', 'Bloquer/Débloquer'];
   dataSource = new MatTableDataSource<any>();
 
   userRoleCount!: number;

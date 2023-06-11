@@ -13,14 +13,9 @@
     <div class="count" *ngIf="url === '/home' && !notVisibleToUser">
       Total Admins: {{ adminCount }}
     </div>
-
     <div class="chart-container" *ngIf="url === '/home' && !notVisibleToUser">
-      <canvas id="myChart">
-
-      </canvas>
+      <canvas id="myChart"></canvas>
     </div>
-
-
     <router-outlet></router-outlet>
   </div>
 </div>

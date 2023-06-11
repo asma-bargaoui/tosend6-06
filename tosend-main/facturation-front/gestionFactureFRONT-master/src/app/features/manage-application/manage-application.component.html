@@ -1,12 +1,15 @@
-<div _ngcontent-ng-c1168945719="" style="margin-top: 2.5rem; margin-bottom: -1rem; font-size: large; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: rgb(61, 61, 133);"> /home/manageapplication </div>
-
+<div class="containerhead">
+  <div class="title">
+    <a>Liste des Application</a>
+  </div>
+  
 <div style="display: flex; justify-content: flex-start; flex-direction: row; margin-top: 2rem">
   
   <mat-form-field>
     <mat-label>Search</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
     </mat-form-field>
-  <button mat-raised-button class="addBtnColor" (click)="openDialog()" >+ Ajouter nouvelle application </button>
+  <button mat-raised-button class="ConventionBtn" (click)="openDialog()" >+  application </button>
 </div>
 
 
@@ -23,7 +26,7 @@
           <input formControlName="libelle" style="width: 22rem;" type="text" pInputText>
       </div>
       <div style="display: flex; flex-direction: column;align-items: center;">
-          <label class="labelMarge">Prix de l'application</label>
+          <label class="labelMarge">Prix de l'application/TTC</label>
           <input formControlName="prix" style="width: 22rem;" type="text" pInputText>
       </div>
       
@@ -51,7 +54,7 @@
       </ng-container>
     
       <ng-container matColumnDef="prix">
-        <th mat-header-cell *matHeaderCellDef> Prix Application </th>
+        <th mat-header-cell *matHeaderCellDef> Prix Application/Dt </th>
         <td mat-cell *matCellDef="let app">{{ app.prix }}</td>
       </ng-container>
     
@@ -59,9 +62,11 @@
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let app">
           <!-- Action buttons for each row -->
-         
           <button mat-icon-button color="warn" (click)="openDeleteDialog(app.id)">
             <mat-icon>delete</mat-icon>
+          </button>
+          <button mat-icon-button color="primary">
+            <mat-icon>edit</mat-icon>
           </button>
         </td>
       </ng-container>
@@ -69,12 +74,12 @@
       <!-- Column Definitions -->
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-      <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
 
     
     </table>
 
-    
+    <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
     <p-dialog [(visible)]="delete" header="Confirm Delete" [style]="{width: '40vw', height: '30vh'}">
       <div> vous les vous vraiment supprimer cette application ?</div>
       <ng-template pTemplate="footer">

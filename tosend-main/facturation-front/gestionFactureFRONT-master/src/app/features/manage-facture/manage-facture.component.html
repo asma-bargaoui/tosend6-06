@@ -1,68 +1,72 @@
-<div _ngcontent-ng-c1168945719="" style="margin-top: 0.1rem; margin-bottom: -1rem; font-size: large; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; color: rgb(61, 61, 133);"> <a (click)="home()"> home</a>/gestion des factures </div>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
-
-     <br><br>
-     <div class="table-container">
-
-      <table class="table">
-        <div class="table-container">
-          <ngx-datatable class="material" [headerHeight]="50" [rows]="items" [limit]="rowLimit" [footerHeight]="50" [externalPaging]="true"
-            [count]="totalItems" [offset]="offset" (page)="onPageChange($event)">
-        
-            <ngx-datatable-column prop="structureLibelle" name="Structure" class="header-column"></ngx-datatable-column>
-            <ngx-datatable-column prop="status" name="Status" class="header-column"></ngx-datatable-column>
-            <ngx-datatable-column prop="dueDatefct" name="Date d'echeance" class="header-column"></ngx-datatable-column>
-            <ngx-datatable-column prop="amount" name="Montant" class="header-column"></ngx-datatable-column>
-            <ngx-datatable-column prop="period" name="Periode" class="header-column" [width]="200"></ngx-datatable-column>
-            <br><br>
-            <ngx-datatable-column name="" class="header-column" [width]="200">
-              <ng-template let-row="row" ngx-datatable-cell-template>
-                <button (click)="paid(row.id)" class="btn btn-primary custom-button">
-                  <i class="fas fa-check"></i>
-                </button>
-              </ng-template>
-            </ngx-datatable-column>
-          </ngx-datatable>
-        
-          <div class="container">
-            <div class="row-limit-container">
-              <label for="row-limit"></label>
-              <select id="row-limit" [(ngModel)]="rowLimit" (change)="onRowLimitChange()" class="custom-select">
-                <option value="5">5</option>
-                <option value="10">10</option>
-                <option value="15">15</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        
+<div class="containerhead">
+  <div class="title">
+    <a>Liste des factures</a>
+  </div>
 
 
+ 
+  <div class="gray-box-container">
+    <div class="note-container">
+      <p class="note-message">
+  <p>Note: Veuillez noter qu'un e-mail de rappel sera envoyé à votre adresse e-mail enregistrée avant la date d'échéance de chaque facture. 
+    Veuillez vérifier régulièrement votre e-mail pour rester à jour.</p>
+  </div>
+  
+    <table mat-table [dataSource]="dataSource"  class="table" >
 
+      <!-- StructureLibelle Column -->
+      <ng-container matColumnDef="structureLibelle">
+        <th mat-header-cell *matHeaderCellDef>Structure</th>
+        <td mat-cell *matCellDef="let row">{{ row.structureLibelle }}</td>
+      </ng-container>
 
+      <!-- DueDatefct Column -->
+      <ng-container matColumnDef="dueDatefct">
+        <th mat-header-cell *matHeaderCellDef>Date d'echeance</th>
+        <td mat-cell *matCellDef="let row">{{ row.dueDatefct }}</td>
+      </ng-container>
 
+      <!-- Amount Column -->
+      <ng-container matColumnDef="amount">
+        <th mat-header-cell *matHeaderCellDef>Montant/DT</th>
+        <td mat-cell *matCellDef="let row">{{ row.amount }}</td>
+      </ng-container>
 
-<!--<div class="container">
-  <table class="responsive-table" st-table="allFacture">
-    <thead>
-      <tr class="table-header">
-        <th class="col col-1" st-sort="id">ID</th>
-        <th class="col col-3" st-sort="convention">Convention</th>
-        <th class="col col-3" st-sort="structure">Structure</th>
-        <th class="col col-3" st-sort="dueDatefct">Date d'echeance fct</th>
-        <th class="col col-3" st-sort="amount">Montant</th>
-        <th class="col col-3" st-sort="period">Periode</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr class="smart-table-row" *ngFor="let fact of allFacture">
-        <td class="col col-1">{{ fact.id }}</td>
-        <td class="col col-3" style="text-align: center;">{{ fact.convention }}</td>
-        <td class="col col-3" style="text-align: center;">{{ fact.structure }}</td>
-        <td class="col col-3" style="text-align: center;">{{ fact.dueDatefct }}</td>
-        <td class="col col-3" style="text-align: center;">{{ fact.amount }}</td>
-        <td class="col col-3" style="text-align: center;">{{ fact.period }}</td>
-      </tr>
-    </tbody>
-  </table>
-</div>-->
+      <!-- Period Column -->
+      <ng-container matColumnDef="period">
+        <th mat-header-cell *matHeaderCellDef>Periode</th>
+        <td mat-cell *matCellDef="let row">{{ row.period }}</td>
+      </ng-container>
+
+      <!-- Status Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef>Status</th>
+        <td mat-cell *matCellDef="let row">{{ row.status }}</td>
+      </ng-container>
+
+      <!-- Action Column -->
+      <ng-container matColumnDef="action">
+        <th mat-header-cell *matHeaderCellDef></th>
+        <td mat-cell *matCellDef="let row">
+          <button mat-button (click)="paid(row.id)" class="btn btn-primary custom-button">
+            Marque comme payé
+          </button>
+        </td>
+      </ng-container>
+      
+      
+
+      <!-- Table Header -->
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+
+      <!-- Table Rows -->
+      <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      
+      <!-- Empty Row -->
+      
+      
+    </table>
+    <mat-paginator [hidePageSize]="true" aria-label="Select page of periodic elements"></mat-paginator>
+  </div>
+</div>
+

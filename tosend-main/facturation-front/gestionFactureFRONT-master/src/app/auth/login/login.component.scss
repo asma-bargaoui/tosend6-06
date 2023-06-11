@@ -1,71 +1,285 @@
+.container {
+  display: flex;
+  height: 100vh;
+}
+
+.logo-container {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.triangle {
+  width: 0;
+  height: 0;
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  opacity: 0;
+  position: absolute;
+}
+
+.left {
+  border-bottom: 200px solid #0093dd;
+  bottom: 0;
+  left: 0;
+  animation: leftTriangleAnimation 1.5s ease-in-out forwards;
+  z-index: 1;
+}
+
+.right {
+  border-bottom: 200px solid #41a6c6;
+  bottom: 0;
+  right: 0;
+  animation: rightTriangleAnimation 1.5s ease-in-out forwards;
+  z-index: 1;
+}
+
+.inverted {
+  border-top: 200px solid #85c9e2;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  animation: invertedTriangleAnimation 1.5s ease-in-out forwards;
+  z-index: 1;
+}
+
+.top {
+  border-bottom: 200px solid #86bbdf;
+  top: 0;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  animation: topTriangleAnimation 1.5s ease-in-out forwards;
+  position: absolute;
+  z-index: 1;
+}
+
+.bigger {
+  width: 0;
+  height: 0;
+  border-left: 200px solid transparent;
+  border-right: 200px solid transparent;
+  border-bottom: 400px solid black;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0;
+  animation: biggerTriangleAnimation 1.7s ease-in-out forwards;
+  z-index: 0; /* Set the z-index to a lower value */
+}
+
+.text {
+  position: absolute;
+  top: 49%;
+  left: 48%;
+  font-size: 220px;
+  font-weight: bold;
+  color: #daca06;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: textAnimation 1.7s ease-in-out forwards;
+  z-index: 2; /* Set the z-index to a lower value */
+}
+
+.textshadow {
+  position: absolute;
+  top: 51%;
+  left: 46%;
+  font-size: 220px;
+  font-weight: bold;
+  color: #000000;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: textshadowAnimation 1.7s ease-in-out forwards;
+  z-index: 1; /* Set the z-index to a lower value */
+}
+
+.centre {
+  position: absolute;
+  top: 63%;
+  left: 20%;
+  font-size: 20px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  color: #000000;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: centreAnimation 1.7s ease-in-out forwards;
+  z-index: 1;
+  white-space: nowrap;
+  transform-origin: left center;
+}
+
+.arabic {
+  position: absolute;
+  top: 70%;
+  font-size: 30px;
+  font-family: 'Times New Roman', Times, serif;
+  font-weight: bold;
+  color: #000000;
+  text-transform: uppercase;
+  opacity: 0;
+  animation: arabicAnimation 1.7s ease-in-out forwards;
+  z-index: 1;
+  white-space: nowrap;
+  transform-origin: left center;
+}
+
+
+@keyframes leftTriangleAnimation {
+  0% {
+    opacity: 0;
+    transform: translate(0%, 0%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(110%, -160%);
+  }
+}
+
+@keyframes rightTriangleAnimation {
+  0% {
+    opacity: 0;
+    transform: translate(0%, 0%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-110%, -160%);
+  }
+}
+
+@keyframes invertedTriangleAnimation {
+  0% {
+    opacity: 0;
+    transform: translate(0%, 0%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0%, 190%);
+  }
+}
+
+@keyframes topTriangleAnimation {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(90%);
+  }
+}
+
+@keyframes biggerTriangleAnimation {
+  80% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-58%, -63%) scale(1);
+  }
+}
+@keyframes textAnimation {
+  80% {
+    opacity: 0;
+    transform: translate(-30%, -110%) rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-30%, -110%) rotate(-25deg);
+  }
+}
+@keyframes textshadowAnimation {
+  80% {
+    opacity: 0;
+    transform: translate(-30%, -110%) rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(-30%, -110%) rotate(-25deg);
+  }
+}
+@keyframes centreAnimation {
+  80% {
+    opacity: 0;
+    transform: rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(-63deg);
+  }
+}
+@keyframes arabicAnimation {
+  80% {
+    opacity: 0;
+    transform: rotate(-90deg);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(0deg);
+  }
+}
+
+  
+
+/////////////////////////////////////////////////////////////////////
+.form-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-right: 20px; /* Add padding to create space on the right */
+  box-sizing: border-box; /* Include padding in the element's total width */
+  background-color: rgba(134, 187, 223, 0.5);
+}
+
 .example-form {
-    min-width: 150px;
-    max-width: 500px;
-    width: 100%;
+  /* Your form styles */
+  min-width: 150px;
+  max-width: 500px;
+
+}
+
+label {
+  font-family: 'Oswald';
+  color: #000000;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.mat-form-field {
+  margin-bottom: 2rem;
+}
+
+.btn {
+  height: 6vh;
+  width: 20vw;
+  font-size: 1.3rem;
+  font-family: 'Oswald';
+}
+.btn:hover {
+  background-color: #0093dd;
+  color: white;
+}
+
+/* Media queries for responsive layout */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
   }
-  
-  .example-full-width {
-    width: 22vw;
+
+  .logo-container {
+    display: none;
   }
-  label{
-    color: #808080;
+
+  .form-container {
+    justify-content: center;
+    padding-right: 0;
+    padding-top: 20px; /* Add top padding to create space */
   }
-  p{
-    color: #808080;
-    font-size: .8vw;
-  }
-  
-  mat-checkbox{
-    color: #808080;
-    font-size: 1.1vw;
-  }
-  
-  span:hover{
-    cursor: pointer;
-    color: #575A5E;
-  }
-  
-  .btn{
-    height: 6vh;
-    width: 20vw;
-    font-size: 1.3rem;
-    font-family: Ebrima;
-  
-  }
-  .blue{
-    font-family: Ebrima;
-    color: white;
-    background-image: linear-gradient(
-        290deg,
-        hsl(197deg 93% 24%) 0%,
-        hsl(206deg 34% 48%) 55%,
-        hsl(213deg 43% 67%) 100%
-    );
-  }
-  
-  ::ng-deep .mat-checkbox-ripple .mat-ripple-element {
-    background-color: #808080 !important;
-  }
-  
-  ::ng-deep .mat-checkbox-checked.mat-accent .mat-checkbox-background {
-    background-color: #808080 !important;
-  }
-  
-  ::ng-deep .mat-checkbox-indeterminate.mat-accent .mat-checkbox-background {
-    background-color: #808080 !important;
-  }
-  
-  mat-checkbox {
-    ::ng-deep .mat-checkbox-inner-container {
-      width: 20px;
-      height: 20px;
-    }
-  }
-  i{
-    font-size: 1.3vw;
-  }
-  .googlebtnSize{
-    height: 6vh;
-    width: 22vw;
-    margin-bottom: 1.8vh;
-  }
+}

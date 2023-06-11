@@ -1,107 +1,185 @@
-.header-container {
-  max-width: 600px; /* Adjust the value as per your requirements */
-  margin: 0 auto; /* Center the table horizontally */
+.containerhead {
+  display: flex;
+  flex-direction: column;
 }
 
-.material{
-  width: 100%;
+.title {
+  text-align: left;
+  margin-top: 1.5rem;
+  font-size: 50px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: rgb(61, 61, 133);
 }
 
-/* Optionally, you can style the table rows and cells for a more compact look */
-.container,.row-limit-container
- {
-  height: 700px;
-  justify-content: center;
-  padding-bottom: 95%;
+.search-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
 }
-.custom-button {
-  background-color: #007bff;
+
+.ConventionBtn {
+  border-radius: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: #61bfad;
   color: #fff;
   border: none;
-  padding: 10px 20px;
+  font-size: 15px;
+  padding: 10px 15px;
   transition: background-color 0.3s ease;
+  box-shadow: 0 0 0 2px rgba(97, 191, 173, 0.5);
+  margin-right: 20px;
 }
 
-.custom-button:hover {
-  background-color: #0056b3;
+.ConventionBtn:hover {
+  background-color: #52ac9f;
 }
 
-.pg
- {
-  padding: 1px;
-  
-
-}
-.container {
-  margin: 20px;
-}
-
-.row-limit-container {
+body {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+  min-height: 90vh;
 }
 
-label {
-  margin-right: 10px;
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  max-height: 100vh;
 }
 
-.custom-select {
-  padding: 1px 5px;
-  font-size: 14px;
-  line-height: 1.42857143;
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+.select-field {
+  margin-bottom: 5%;
+}
+
+.button-container {
+  margin-top: 50px;
+}
+
+.form-field {
+  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-left: 10px;
+}
+
+.label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.select,
+.input {
+  width: 100%;
+  padding: 10px;
   border-radius: 4px;
   border: 1px solid #ccc;
-  color: #555;
-  background-color: #fff;
-  background-image: none;
-  transition: border-color ease-in-out 0.15s, box-shadow ease-in-out 0.15s;
 }
 
-.custom-select:focus {
-  border-color: #66afe9;
-  outline: 0;
-  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102,175,233,.6);
-}
-.table-container {
-  width: 100%;
-  margin-bottom: 5%;
-  background-color: #fff;
-  margin-right: 40%;
-  margin-left: 2%;
-  padding-left: 5%;
-  margin: auto;
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
 }
 
+.submit-button {
+  color: white;
+}
 
-
-.table th,
-.table td {
+.mat-horizontal-stepper-header-container {
+  background-color: #f5f5f5;
   padding: 10px;
-  border: 1px solid #ccc;
-  text-align: center;
+  border-radius: 4px;
 }
 
-.table th {
- 
+.mat-step-header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  background-color: #ddd;
+  border-radius: 4px;
+}
+
+.mat-step-header .mat-step-icon {
+  background-color: #888;
+  color: #fff;
+  border-radius: 50%;
+  padding: 5px;
+}
+
+.mat-step-header .mat-step-icon .mat-icon {
+  font-size: 20px;
+}
+
+.mat-step-header .mat-step-icon .mat-icon svg {
+  width: 20px;
+  height: 20px;
+}
+
+
+.error-message {
+  color: #ff0000; 
+  font-size: 14px; 
+  margin-top: 5px; 
+
+}
+
+
+
+.containerhead {
+  margin-top: 1%;
+}
+
+.gray-box-container {
+  background-color: #3e3d3d23;
+  margin-top: 5%;
+  padding: 10%;
+  margin-right: 10%;
+}
+
+.table {
+  width: 100%;
+  margin-top: 5%;
+  margin-bottom: 5%;
+  margin-left: 1%;
+  margin-right: 0%;
+  overflow-x: auto;
+}
+
+.note-container {
+  background-color: #ffffff;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.note-message {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.note-remainder {
+  font-size: 18px;
   font-weight: bold;
 }
 
-.table tr:nth-child(even) {
-  background-color: #f9f9f9;
-}
-.row-limit{
-  align-items:center;
-}
-.header-column {
-  position: relative;
+.btn {
+  font-weight: bold;
+  color: white;
+  background-color: #007bff;
+  border-color: #007bff;
 }
 
-.header-column::before {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  height: 1px;
-  background-color: #ccc;
+.btn:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.mat-paginator {
+  margin-top: 5px;
 }

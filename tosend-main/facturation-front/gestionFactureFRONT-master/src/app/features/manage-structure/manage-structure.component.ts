@@ -1,7 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { StructureService } from '../services/structure.service';
 import { ConfirmationService } from 'primeng/api';
+import { MatPaginator } from '@angular/material/paginator';
+
 
 @Component({
   selector: 'app-manage-structure',
@@ -22,6 +24,13 @@ export class ManageStructureComponent implements OnInit {
   
   structureId!: number;
   delete!: boolean;
+
+
+  @ViewChild(MatPaginator)
+  paginator!: MatPaginator;
+  dataSource: any;
+ 
+
   constructor(private fb: FormBuilder, private structureService: StructureService, confirmationService: ConfirmationService) { }
 
   ngOnInit(): void {
@@ -29,6 +38,10 @@ export class ManageStructureComponent implements OnInit {
     this.initUpdateForm();
     this.getAllWithoutMinistere();
     this.getAllStructure();
+  }
+  ngAfterViewInit() {
+    this.dataSource.paginator = this.paginator;
+    this.fetchData();
   }
 
   fetchData() {

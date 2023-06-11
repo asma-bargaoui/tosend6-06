@@ -1,24 +1,60 @@
-<div class="cards">
-  <div class="buttons">
-    <button *ngIf="notVisibleToUser" class="btn" (click)="navigateToUsers()">
-      <img src="assets/sideBar/Groupe%2010768.png" style="width: 28px" /><span>utilisateurs</span>
-    </button>
 
-    <button *ngIf="notVisibleToUser" class="btn" (click)="navigateToApplications()">
-      <img src="assets/sideBar/Groupe%2010769.png" style="width: 28px" /><span>Applications</span>
-    </button>
+  <div class="cards" [ngClass]="{'collapsed': isCollapsed}" (mouseenter)="isCollapsed = false" (mouseleave)="isCollapsed = true">
+    <div class="buttons" [ngClass]="{'hidden': isCollapsed}">
+      <img class="logo" src="assets/logo.png" alt="" (click)="isCollapsed = !isCollapsed">
+      <button *ngIf="notVisibleToUser" class="btn" [class.active]="currentPage === 'users'" (click)="navigateToUsers()">
+        <div class="btn-content">
+          <img src="assets/sideBar/Groupe%2010768.png" style="width: 28px" />
+          <span>Utilisateurs</span>
+        </div>
+      </button>
+      <button *ngIf="notVisibleToUser" class="btn" [class.active]="currentPage === 'applications'" (click)="navigateToApplications()">
+        <div class="btn-content">
+          <img src="assets/sideBar/Groupe%2010769.png" style="width: 28px" />
+          <span>Applications</span>
+        </div>
+      </button>
+      <button *ngIf="notVisibleToUser" class="btn" [class.active]="currentPage === 'structures'" (click)="navigateToStructure()">
+        <div class="btn-content">
+          <img src="assets/sideBar/Groupe%2010780.png" style="width: 28px" />
+          <span>Structures</span>
+        </div>
+      </button>
 
-    <button *ngIf="notVisibleToUser" class="btn" (click)="navigateToStructure()">
-      <img src="assets/sideBar/Groupe%2010780.png" style="width: 28px" /><span>Structures</span>
-    </button>
 
-    
 
-    <button *ngIf="notVisibleToAdmin" class="btn" (click)="navigateToConventions()">
-      <img src="assets/sideBar/Groupe%2010772.png" style="width: 28px" /><span>Conventions</span>
-    </button>
-    <button *ngIf="notVisibleToAdmin" class="btn" (click)="navigateToFacture()">
-      <img src="assets/sideBar/Groupe%2010769.png" style="width: 28px" /><span>Factures</span>
-    </button>
+      <button *ngIf="notVisibleToAdmin" class="btn" [class.active]="currentPage === 'conventions'" (click)="navigateToConventions()">
+        <div class="btn-content">
+          <img src="assets/sideBar/CONVENTION.png" style="width: 40px" />
+          <span>Conventions</span>
+        </div>
+      </button>
+
+
+      <button *ngIf="notVisibleToAdmin" class="btn" [class.active]="currentPage === 'factures'" (click)="navigateToFacture()">
+        <div class="btn-content">
+          <img src="assets/sideBar/Facture.png" style="width: 40px" />
+          <span>Factures</span>
+        </div>
+      </button>
+
+      <button *ngIf="notVisibleToAdmin" class="btn" [class.active]="currentPage === 'Calendrier'" (click)="navigateToCalendrier()">
+        <div class="btn-content">
+          <img src="assets/sideBar/calendrier.png" style="width: 40px" />
+          <span>Calendrier</span>
+        </div>
+      </button>
+
+
+
+      <button *ngIf="notVisibleToAdmin" class="btn btn-compte" [class.active]="currentPage === 'Compte'" (click)="navigateToCompte()">
+        <div class="btn-content">
+          <img src="assets/sideBar/compte.png" style="width: 40px" />
+          <span>Compte</span>
+        </div>
+      </button>
+      
+
+    </div>
   </div>
-</div>
+

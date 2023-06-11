@@ -1,127 +1,66 @@
-.container {
-  width: 100%;
-  max-width: 500px;
-  margin-left: 40%;
-  margin-top: 20%;
-  padding: 30px;
-  max-height: 700px;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
-
-  
-}
-.select-field {
-  margin-bottom: 20px;
+.containerhead {
+  display: flex;
+  flex-direction: column;
 }
 
-.button-container {
-  margin-top: 50px;
-}
 .title {
-  text-align: center;
+  text-align: left;
+  margin-top: 1.5rem;
+  font-size: 50px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: rgb(61, 61, 133);
 }
 
-.form-field {
-  margin-bottom: 20px;
-  margin-top: 10px; 
-  margin-left:10px;
-
-}
-
-.label {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 5px;
-}
-
-.select,
-.input {
-  width: 100%;
-  padding: 10px;
-  border-radius: 4px;
-  border: 1px solid #ccc;
-}
-
-.button-container {
+.search-bar {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
-}
-
-.submit-button {
-  color: white;
- 
-}
-
-
-
-.mat-horizontal-stepper-header-container {
-  background-color: #f5f5f5;
-  padding: 10px;
-  border-radius: 4px;
-}
-
-.mat-step-header {
-  display: flex;
   align-items: center;
-  justify-content: center;
-  padding: 10px;
-  background-color: #ddd;
-  border-radius: 4px;
+  padding: 2rem;
 }
 
-.mat-step-header .mat-step-icon {
-  background-color: #888;
-  color: #fff;
-  border-radius: 50%;
-  padding: 5px;
-  margin-right: 10px;
-}
-
-.mat-step-header .mat-step-label {
+.ConventionBtn {
+  border-radius: 15px;
+  text-transform: uppercase;
   font-weight: bold;
-}
-
-.mat-step-header.mat-step-header-selected {
-  background-color: #4CAF50;
+  background-color: #61bfad;
   color: #fff;
+  border: none;
+  font-size: 15px;
+  padding: 10px 15px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0 0 2px rgba(97, 191, 173, 0.5);
+  margin-right: 20px;
 }
 
-.mat-step-header.mat-step-header-completed {
-  background-color: #45a049;
-  color: #fff;
+.ConventionBtn:hover {
+  background-color: #52ac9f;
 }
 
-.mat-step-content {
-  padding: 50px;
- 
-  border-radius: 4px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.container-wrapper {
+body {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height:100vh; 
-  margin-right: 30%;
-  margin-left: 10%;
-  color:rgb(8, 8, 150);
+  flex-direction: column;
+  min-height: 90vh;
 }
-.form-field {
+
+.container {
+  flex: 1;
   display: flex;
-  margin-right:20px;
-  align-items: center;
-  margin-bottom: 20px;
+  flex-direction: column;
+  margin-top: 5px;
+  max-height: 100vh;
 }
 
-.form-field label {
-  width: 200px;
-  margin-right:10px;
-  white-space: nowrap;
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+
+   
+
+.gray-box-container {
+  background-color: #3e3d3d23;
+  margin-top: 5%;
+  padding: 10%;
+  margin-right: 5%;
 }
 
-.form-field input {
-  flex-grow:0.5;
-}
+

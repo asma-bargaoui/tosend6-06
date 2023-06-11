@@ -16,12 +16,18 @@ import { FeaturesModule } from './features/features.module';
 import { NgxPaginationModule } from 'ngx-pagination';
 //import { Chart } from 'chart.js';
 import { RouterModule, Routes } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+
+
+
 
 
 @NgModule({
   declarations: [
     AppComponent,
     MainComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -32,7 +38,11 @@ import { RouterModule, Routes } from '@angular/router';
     SharedModule,
     FeaturesModule,
     NgxPaginationModule,
+    CommonModule,
+
    // Chart,
+
+   
    
   ],
   providers: [

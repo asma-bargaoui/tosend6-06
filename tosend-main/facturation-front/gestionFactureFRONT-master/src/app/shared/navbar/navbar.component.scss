@@ -1,146 +1,60 @@
-
 .nav {
-    background-color: rgb(13, 5, 122);
-    height: 10vh;
-    box-shadow: 2.5px 2.5px 10px 0 rgba(249, 242, 242, 0.873);
-    display: flex;
-    justify-content: flex-end;
-    position: relative;
+  background-color: rgb(255, 255, 255);
+  height: 10vh;
+  box-shadow: 2.5px 2.5px 10px 0 rgba(249, 242, 242, 0.873);
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 10px;
+  width: 90%;
+}
 
-  }
-  
-  .bellStyle{
-    position:relative;
-    top: 1rem;
-    margin-right: 5rem;
-    font-size: 2.2rem;
-    color:#065878
-  }
-  .circle {
-    //margin-top: 1rem;
-    background-color: #ccc;
-    border-radius: 50%;
-    text-align: center;
-    height: 3rem;
-    width: 3rem;
-  }
-  
-  .initials {
-    font-size: 1.3rem; /* 50% of parent */
-    line-height: 1;
-    position: relative;
-    top: .6rem; /* 25% of parent */
-  }
-  .circleMenu {
-    //margin-top: 1rem;
-    background-color: #ccc;
-    border-radius: 50%;
-    text-align: center;
-    height: 2rem;
-    width: 2rem;
-  }
-  
-  .initialsMenu {
-    font-size: .8rem;
-    line-height: 1;
-  
-  }
-  .arrowDown{
-    position:relative;
-    top: .5rem;
-    margin-left: 1.5rem;
-    margin-right: 3.5rem;
-    font-size: 2.2rem;
-    cursor: pointer;
-  }
-  .mat-form-field-underline {
-    position: absolute;
-    width: 0px !important;
-    pointer-events: none;
-    transform: scale3d(1, 1.0001, 1);
-  }
-  
-  .example-spacer {
-    flex: 1 1 auto;
-  }
-  
-  .side-spacer {
-    margin-left: 20%;
-  }
-  
-  .headerText {
-    font-family: "Louis-Gearge-Cafe";
-    font-size: 1vw;
-    font-weight: 300;
-    font-stretch: normal;
-    font-style: normal;
-    font-size: 2.5vh;
-    letter-spacing: normal;
-    text-align: center;
-    color: #fff;
-    white-space: normal;
-  }
-  .hello-username {
-    font-size: 2vh;
-    color: #fff;
-    font-family: LouisGeorgeCafe;
-    margin-right: 10px;
-    padding-top: 2vh;
-  }
-  .user-field {
-    border-radius: 50%;
-    border: 2.5px solid white;
-    height: 4vh;
-    width: 4vh;
-    color: white;
-    display: flex;
-    margin: auto;
-    align-items: flex-end;
-    justify-content: center;
-  }
-  .user-icon {
-    color: white;
-    font-size: 3vh;
-  }
-  .arrow {
-    width: 4.7px;
-    height: 2.6px;
-    border: solid 0.5px #fff;
-    background-color: #fff;
-  }
-  @media only screen and (max-width: 1500px) {
-    .side-spacer {
-      margin-left: 0;
-    }
-    .headerText {
-      padding-left: 20vw;
-      max-width: 45vw;
-    }
-  }
-  
-  @media only screen and (max-width: 900px) {
-    .headerText {
-      font-size: 0.9em;
-      padding-left: 0;
-    }
-  }
-  
-  @media only screen and (max-width: 480px) {
-    .headerText {
-      font-size: 0.7rem;
-      line-height: 1rem;
-    }
-  }
-  .myMenu{
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
-  }
-  mat-list-item:hover{
-    background-color: rgba(235, 238, 239, 0.974);
-    cursor: pointer;
-  }
-  ::ng-deep .mat-menu-panel {
-    padding-right: 10px!important;
-    max-width: 200px!important;
-  }
+.navbar-container {
+  display: flex;
+  align-items: center;
+  margin-right: 10px; /* Add margin-right to create space between circle and hello username */
+}
+
+.circle {
+  background-color: #ccc;
+  border-radius: 50%;
+  text-align: center;
+  height: 3rem;
+  width: 3rem;
+  margin-right: 1rem;
+}
+
+.initials {
+  font-size: 1.3rem;
+  line-height: 3rem;
+}
+
+.arrowDown {
+  font-size: 2.2rem;
+  cursor: pointer;
+}
+
+.myMenu {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.mat-list-item:hover {
+  background-color: rgba(235, 238, 239, 0.974);
+  cursor: pointer;
+}
+
+::ng-deep .mat-menu-panel {
+  padding-right: 10px !important;
+  max-width: 200px !important;
+}
+
+.hello-username {
+  font-size: 2vh;
+  color: #0093dd;
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+  margin-top: 10px; 
+  margin-right: 10px;
+}

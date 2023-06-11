@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Manage Calendrier</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f2f2f2;
+    }
+
+    .calendar {
+      max-width: 300px;
+      margin: 20px auto;
+      background-color: #0093dd;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .calendar-header {
+      background-color: #2b2dae;
+      color: #fff;
+      padding: 10px;
+      text-align: center;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+    }
+
+    .calendar-header h3 {
+      margin: 0;
+      font-size: 18px;
+    }
+
+    .calendar-nav {
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+    }
+
+    .calendar-nav button {
+      background-color: transparent;
+      border: none;
+      cursor: pointer;
+      color: #2b2dae;
+      font-size: 18px;
+    }
+
+    .calendar-table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    .calendar-table th,
+    .calendar-table td {
+      padding: 8px;
+      text-align: center;
+    }
+
+    .calendar-table th {
+      color: #fff;
+    }
+
+    .calendar-table td {
+      color: #fff;
+    }
+
+    .calendar-table td.highlight {
+      background-color: #2b2dae;
+      color: #fff;
+    }
+
+    .calendar-table td.empty {
+      background-color: #0093dd;
+    }
+
+    .deadline {
+      font-size: 12px;
+      font-weight: bold;
+      color: #fff;
+      margin-top: 2px;
+    }
+
+    .bottom-text {
+      text-align: center;
+      margin-top: 55px;
+      color: #ff0000;
+      font-size: 16px;
+      font-family: "Arial Black", sans-serif;
+    }
+  </style>
+</head>
+<body>
+  <div class="calendar">
+    <div class="calendar-header">
+      <h3>Calendar</h3>
+    </div>
+    <div class="calendar-nav">
+      <button id="prev">&lt;</button>
+      <button id="next">&gt;</button>
+    </div>
+    <table class="calendar-table">
+      <thead>
+        <tr>
+          <th>Sun</th>
+          <th>Mon</th>
+          <th>Tue</th>
+          <th>Wed</th>
+          <th>Thu</th>
+          <th>Fri</th>
+          <th>Sat</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="empty"></td>
+          <td class="empty"></td>
+          <td class="empty"></td>
+          <td class="empty"></td>
+          <td class="empty"></td>
+          <td>1</td>
+          <td>2</td>
+        </tr>
+        <tr>
+          <td>3</td>
+          <td>4</td>
+          <td>5</td>
+          <td>6</td>
+          <td>7</td>
+          <td>8</td>
+          <td>9</td>
+        </tr>
+        <tr>
+          <td>10</td>
+          <td>11</td>
+          <td>12</td>
+          <td>13</td>
+          <td>14</td>
+          <td>15</td>
+          <td>16</td>
+        </tr>
+        <tr>
+          <td>17</td>
+          <td>18</td>
+          <td>19</td>
+          <td>20</td>
+          <td>21</td>
+          <td>22</td>
+          <td>23</td>
+        </tr>
+        <tr>
+          <td>24</td>
+          <td>25</td>
+          <td class="highlight" title="Date d'échéance">26<span class="deadline">Date d'échéance</span></td>
+          <td>27</td>
+          <td>28</td>
+          <td>29</td>
+          <td>30</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="bottom-text">
+    Attention le 26-Juin-2023 vous avez une date d'échéance de votre facture numéro 123
+  </div>
+</body>
+</html>

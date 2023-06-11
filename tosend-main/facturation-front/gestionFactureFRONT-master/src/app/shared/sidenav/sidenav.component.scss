@@ -1,33 +1,28 @@
 .cards {
-  width: min-content;
-  background: rgb(1, 1, 103);
-  height: 80vh;
+  position: fixed;
+  top: 0;
+  background: #b9bff8;
+  height: 100vh;
   overflow: hidden;
   border-radius: 10px;
-  margin-left: 2vh;
-  margin-top: 2vh;
-  box-shadow: 2.5px 2.5px 10px 0 rgba(13, 232, 31, 0.876);
   display: flex;
   flex-direction: column;
+  transition: width 0.3s ease;
+  width: 200px;
+  margin-top: 0;
+  left: 0;
+  z-index: 1;
 }
-.height {
-  height: 102%;
+.logo {
+  width: 90%; 
+  height: auto; 
 }
-.height1 {
-  height: 101.6%;
-}
-.height2 {
-  height: 100.9%;
-}
-.height3 {
-  height: 102%;
-}
-.height4 {
-  height: 100%;
-}
-.image1 {
-  width: 70%;
-  margin: 3.3vh;
+
+
+.cards.collapsed {
+  width: 65px;
+  background-color: #86bbdf;
+  border-radius: 0;
 }
 
 .buttons {
@@ -39,60 +34,52 @@
   text-align: start;
   text-decoration: none;
   border-radius: 0.5rem;
-  font-family: "Louis-Gearge-Cafe";
+  font-family: "Lato", sans-serif;
+  font-weight: bold;
   width: 21vh;
   height: 6vh;
-  margin: 1vh 0.5vh 1vh 0.5vh;
+  margin: 3vh 0.5vh;
   color: #f8f0f0;
-  background: rgb(1, 1, 103);
   font-size: 2vh;
-  padding-left: 1.2rem;
+  padding-left: 0.7rem;
+  display: flex;
+  align-items: center;
+  background: transparent;
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.btn-content {
   display: flex;
   align-items: center;
 }
 
-.btn .mat-icon {
-  color: #4e5652;
-}
-
 .btn span {
-  padding-left: 1rem;
+  margin-left: 0.7rem; 
 }
 
-.btn:hover,
-.btn:focus,
-.active {
-  background-image: linear-gradient(106deg, #cdd2d6 7%, #585a5b 127%);
-  color: white;
-  padding-left: 0rem;
-  padding-right: 1.2rem;
-  display: flex;
-  justify-content: flex-end;
-
+.btn.active {
+  background-color: hsla(243, 84%, 22%, 0.336); 
 }
 
-.btn:hover .mat-icon,
-.btn:focus .mat-icon,
-.active .mat-icon {
-  color: white;
+.cards.collapsed:hover .btn:not(.active) {
+  background-color: hsla(243, 84%, 22%, 0.336);
 }
 
-.btn:hover span .active,
-.btn:focus span .active {
-  padding-left: 0.5rem;
+.cards:not(.collapsed):hover .btn:not(.active) {
+  background-color: hsla(243, 84%, 22%, 0.411);
+  color: #ffffff; 
 }
 
-.mat-icon {
-  vertical-align: middle;
+.cards:not(:hover) .btn:not(.active) {
+  background-color: transparent; 
 }
 
-
-@media only screen and (max-width:1050px) {
-  .cards{
-    width: 10vw;
+@media only screen and (max-width: 1050px) {
+  .cards {
+    width: auto;
     margin-left: 3vw;
   }
-  .btn{
+  .btn {
     width: 19vw;
   }
   .image1 {
@@ -100,18 +87,25 @@
     margin: 2vw 2.5vw;
   }
 }
+.btn-compte {
+  margin-top: 39vh; 
+}
+
 
 @media only screen and (max-width: 900px) {
-  .cards  {
+  .cards {
     height: auto;
-    width: auto;
+    width: auto; /* Changed from min-content */
     margin-top: 0;
     margin-left: 0;
     justify-content: left;
     align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
-    justify-content: space-around;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    border-radius: 0;
   }
   .buttons {
     margin-top: 0;
@@ -119,7 +113,16 @@
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
+    overflow: hidden;
+    white-space: nowrap;
+    transition: margin-left 0.3s ease;
+    margin-left: 0;
   }
+
+  .buttons.hidden {
+    margin-left: -150px;
+  }
+
   .btn {
     width: 14vh;
     display: flex;
@@ -128,28 +131,36 @@
     justify-content: center;
     padding-left: 0rem;
   }
-  .btn span {
-    padding-left: 0;
-  }
-  .btn:hover,
-  .btn:focus {
+  
+  .btn:hover:not(.collapsed),
+  .btn:focus:not(.collapsed) {
     text-align: center;
   }
-  .btn:hover,
-  .btn:focus,
-  .active {
+  .btn:hover:not(.collapsed),
+  .btn:focus:not(.collapsed),
+  .active:not(.collapsed) {
     text-align: center;
     justify-content: center;
     padding-left: 0rem;
     padding-right: 0rem;
   }
-  .btn:hover span .active,
-  .btn:focus span .active {
+  .btn:hover:not(.collapsed) span .active,
+  .btn:focus:not(.collapsed) span .active {
     padding-left: 0;
   }
 
   .image1 {
     width: 6.5rem;
     margin: 1vh;
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .cards.collapsed {
+    width: 65px;
+  }
+
+  .buttons.hidden {
+    margin-left: -200px;
   }
 }

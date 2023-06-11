@@ -1,377 +1,154 @@
-.addBtnColor{
-    background-image: linear-gradient(
-        290deg,
-        hsl(197deg 93% 24%) 0%,
-        hsl(206deg 34% 48%) 55%,
-        hsl(213deg 43% 67%) 100%
-    );
-    color: white;
-    border-radius: 10px;
-    font-weight: 5;
-    margin-right: 1.2rem;
-  }
-  
-  .filterBlock{
-    width: 80vw;
-    height: 25vh;
-    margin-top: 2rem;
-    border-radius: 12px;
-    box-shadow: 5px 4px 22px 0px rgba(194, 193, 193, 0.75);
-  
-  }
-  
-  .headClass{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-  }
-  
-  ::ng-deep .mat-form-field-outline-start {
-    border-radius: 20px 0 0 20px !important;
-    min-width: 20px !important;
-  }
-  
-  ::ng-deep .mat-form-field-outline-end {
-    border-radius: 0 20px 20px 0 !important;
-  }
-  .filterClass{
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-  }
-  
-  .marginItemsListe{
-    margin-top: 2.2rem;margin-left: 4rem;
-    width: 25%;
-  }
-  .marginItemsListe2{
-    margin-left: 4rem;
-    width: 25%;
-    font-weight: bolder;
-    font-size: .8rem;
-  }
-  .marginItemsListeHead{
-    margin-top: 1rem;
-    margin-left: 8rem;
-  }
-  .marginItemS{
-    margin-top: 1rem;
-    margin-left: 7rem;
-  }
-  .noBorder{
-    margin-top: 1.3rem;
-    margin-left: 5rem;
-  }
-  
-  ::ng-deep {
-    .mat-form-field-appearance-outline.noBorder .mat-form-field-outline {
-      color: transparent;
-    }
-  }
-  
-  .circle {
-    margin-top: .4rem;
-    background-color: #ccc;
-    border-radius: 50%;
-    text-align: center;
-    height: 4rem;
-    width: 4rem;
-  }
-  
-  .initials {
-    font-size: 1.5rem; /* 50% of parent */
-    line-height: 1;
-    position: relative;
-    top: 1.4rem; /* 25% of parent */
-  }
-  
-  .candidateList{
-    margin-top: 2rem;
-    margin-left: 2.3rem;
-    width: 80vw;
-    display: flex;
-    justify-content: center;
-    border-radius: 12px;
-    box-shadow: 5px 4px 22px 0px rgba(194, 193, 193, 0.75);
-  }
-  .candidateListHead{
-    margin-top: 2rem;
-    margin-left: 9.3rem;
-    width: 80vw;
-    border-radius: 12px;
-    box-shadow: 5px 4px 22px 0px rgba(194, 193, 193, 0.75);
-  }
-  .example-viewport {
-    height: 77vh;
-    width: 100vw;
-  }
-  
-  .custom-marker {
-    display: flex;
-    width: 2rem;
-    height: 2rem;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-    border-radius: 50%;
-    z-index: 1;
-  }
-  
-  ::ng-deep {
-    .p-timeline-event-content,
-    .p-timeline-event-opposite {
-      line-height: 1;
-    }
-  }
-  
-  @media screen and (max-width: 960px) {
-    ::ng-deep {
-      .customized-timeline {
-        .p-timeline-event:nth-child(even) {
-          flex-direction: row !important;
-  
-          .p-timeline-event-content {
-            text-align: left !important;
-          }
-        }
-  
-        .p-timeline-event-opposite {
-          flex: 0;
-        }
-  
-        .p-card {
-          margin-top: 1rem;
-        }
-      }
-    }
-  }
-  :host ::ng-deep .p-dropdown{
-    width: 22rem;
-  }
+.containerhead {
+  display: flex;
+  flex-direction: column;
+}
 
-  .addBtnColor{
-    background-image: linear-gradient(
-        290deg,
-        hsl(197deg 93% 24%) 0%,
-        hsl(206deg 34% 48%) 55%,
-        hsl(213deg 43% 67%) 100%
-    );
-    color: white;
-    border-radius: 10px;
-    font-weight: 5;
-    margin-right: 1.2rem;
-  }
-  
-  .filterBlock{
-    width: 80vw;
-    height: 25vh;
-    margin-top: 2rem;
-    border-radius: 12px;
-    box-shadow: 5px 4px 22px 0px rgba(194, 193, 193, 0.75);
-  
-  }
-  
-  .headClass{
-    display: flex;
-    justify-content: space-between;
-    flex-direction: row;
-  }
-  
-  ::ng-deep .mat-form-field-outline-start {
-    border-radius: 20px 0 0 20px !important;
-    min-width: 20px !important;
-  }
-  
-  ::ng-deep .mat-form-field-outline-end {
-    border-radius: 0 20px 20px 0 !important;
-  }
-  .filterClass{
-    display: flex;
-    justify-content: space-around;
-    flex-direction: row;
-  }
-  
-  .marginItemsListe{
-    margin-top: 2.2rem;margin-left: 4rem;
-    width: 25%;
-  }
-  .marginItemsListe2{
-    margin-left: 4rem;
-    
-    width: 25%;
-  }
-  .marginItemsListeHead{
-    margin-top: 1rem;
-    margin-left: 8rem;
-  }
-  .marginItemS{
-    margin-top: 1rem;
-    margin-left: 7rem;
-  }
-  .noBorder{
-    margin-top: 1.3rem;
-    margin-left: 5rem;
-  }
-  
-  ::ng-deep {
-    .mat-form-field-appearance-outline.noBorder .mat-form-field-outline {
-      color: transparent;
-    }
-  }
-  
-  .circle {
-    margin-top: .4rem;
-    background-color: #ccc;
-    border-radius: 50%;
-    text-align: center;
-    height: 4rem;
-    width: 4rem;
-  }
-  
-  .initials {
-    font-size: 1.5rem; /* 50% of parent */
-    line-height: 1;
-    position: relative;
-    top: 1.4rem; /* 25% of parent */
-  }
-  
-  .candidateList{
-    margin-top: 2rem;
-    margin-left: 2.3rem;
-    width: 80vw;
-    display: flex;
-    justify-content: center;
-    border-radius: 12px;
-    box-shadow: 5px 4px 22px 0px rgba(194, 193, 193, 0.75);
-  }
-  .candidateListHead{
-    margin-top: 2rem;
-    margin-left: 9.3rem;
-    width: 80vw;
-    border-radius: 12px;
-    box-shadow: 5px 4px 22px 0px rgba(194, 193, 193, 0.75);
-  }
-  .example-viewport {
-    height: 77vh;
-    width: 100vw;
-  }
-  
-  .custom-marker {
-    display: flex;
-    width: 2rem;
-    height: 2rem;
-    align-items: center;
-    justify-content: center;
-    color: #ffffff;
-    border-radius: 50%;
-    z-index: 1;
-  }
-  
-  ::ng-deep {
-    .p-timeline-event-content,
-    .p-timeline-event-opposite {
-      line-height: 1;
-    }
-  }
-  
-  @media screen and (max-width: 960px) {
-    ::ng-deep {
-      .customized-timeline {
-        .p-timeline-event:nth-child(even) {
-          flex-direction: row !important;
-  
-          .p-timeline-event-content {
-            text-align: left !important;
-          }
-        }
-  
-        .p-timeline-event-opposite {
-          flex: 0;
-        }
-  
-        .p-card {
-          margin-top: 1rem;
-        }
-      }
-    }
-  }
+.title {
+  text-align: left;
+  margin-top: 1.5rem;
+  font-size: 50px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: rgb(61, 61, 133);
+}
 
-  body {
-    font-family: 'lato', sans-serif;
-  }
-  .container {
-    max-width: 1000px;
-    margin-left: -1.8rem;
-    padding-left: 10px;
-    padding-right: 10px;
-  }
-  
-  h2 {
-    font-size: 26px;
-    margin: 20px 0;
-    text-align: center;
-    small {
-      font-size: 0.5em;
-    }
-  }
-  
-  .responsive-table {
-    li {
-      border-radius: 6px;
-      padding: 25px 30px;
-      display: flex;
-      justify-content: space-between;
-      margin-bottom: 25px;
-    }
-    .table-header {
-      background-color: #547FA2;
-      font-size: 14px;
-      text-transform: uppercase;
-      letter-spacing: 0.03em;
-    }
-    .table-row {
-      background-color: #ffffff;
-      box-shadow: 0px 0px 9px 0px rgba(0,0,0,0.1);
-    }
-    .col-1 {
-      flex-basis: 10%;
-    }
-    
-    .col-3 {
-      flex-basis: 25%;
-    }
-    .col-4 {
-      flex-basis: 25%;
-    }
-    
-    @media all and (max-width: 767px) {
-      .table-header {
-        display: none;
-      }
-    
-      li {
-        display: block;
-      }
-      .col {
-        
-        flex-basis: 100%;
-        
-      }
-      .col {
-        display: flex;
-        padding: 10px 0;
-        &:before {
-          color: #6C7A89;
-          padding-right: 10px;
-          content: attr(data-label);
-          flex-basis: 50%;
-          text-align: right;
-        }
-      }
-    }
-  }
+.search-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem;
+}
 
-  :host ::ng-deep .p-button.p-button-icon-only.p-button-rounded{
-    height: 2rem;
-    width: 2rem;
-  }
+.ConventionBtn {
+  border-radius: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: #61bfad;
+  color: #fff;
+  border: none;
+  font-size: 15px;
+  padding: 10px 15px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0 0 2px rgba(97, 191, 173, 0.5);
+  margin-right: 20px;
+}
+
+.ConventionBtn:hover {
+  background-color: #52ac9f;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  max-height: 100vh;
+}
+
+
+///////////////////////////////////////////////////////////////////////////////////////////
+
+
+   
+
+.gray-box-container {
+  background-color: #3e3d3d23;
+  margin-top: 5%;
+  padding: 10%;
+  margin-right: 5%;
+}
+
+
+
+.containerhead {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; /* Align content to the start (left) */
+}
+
+.title {
+  text-align: left;
+  margin-top: 1.5rem;
+  font-size: 50px;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: rgb(61, 61, 133);
+}
+
+.search-bar {
+  display: flex;
+  justify-content: flex-end; /* Align content to the end (right) */
+  align-items: center;
+  padding: 2rem;
+}
+
+.UtilisateurBtn {
+  border-radius: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: #2aa18b;
+  color: #659e3d;
+  border: none;
+  font-size: 15px;
+  padding: 10px 15px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0 0 2px rgba(97, 191, 173, 0.5);
+  margin-left: 20px; /* Use margin-left instead of margin-right */
+}
+
+.UtilisateurBtn:hover {
+  background-color: #52ac9f;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 90vh;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  max-height: 100vh;
+}
+
+
+.active-button {
+  border-radius: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: #2aa18b; /* Green color for active state */
+  color: #fff;
+  border: none;
+  font-size: 15px;
+  padding: 10px 15px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0 0 2px rgba(97, 191, 173, 0.5);
+}
+
+.inactive-button {
+  border-radius: 15px;
+  text-transform: uppercase;
+  font-weight: bold;
+  background-color: #e74c3c; /* Red color for inactive state */
+  color: #fff;
+  border: none;
+  font-size: 15px;
+  padding: 10px 15px;
+  transition: background-color 0.3s ease;
+  box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.5);
+}
+
+.active-button:hover {
+  background-color: #52ac9f;
+}
+
+.inactive-button:hover {
+  background-color: #ff665c;
+}
