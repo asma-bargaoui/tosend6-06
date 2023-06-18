@@ -1,16 +1,19 @@
-
 <div class="containerhead">
   <div class="title">
     <a>Liste des Structures </a>
   </div>
 
-<div style="display: flex; justify-content: flex-start; flex-direction: row; margin-top: 2rem">
-  <mat-form-field>
-  <mat-label>Search</mat-label>
-    <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
-  </mat-form-field>
-  <button mat-raised-button class="ConventionBtn" (click)="openDialog()">+  Structure</button>
-</div>
+  <div style="display: flex; justify-content: flex-start; flex-direction: row; margin-top: 2rem">
+  
+    <mat-form-field style="margin-left: 7%;">
+      <mat-label>Search</mat-label>
+      
+        <input matInput (keyup)="applyFilter($event)" placeholder="" #input >
+      </mat-form-field>
+      </div>
+    <button mat-raised-button class="ConventionBtn" (click)="openDialog()" >  +  </button>
+  </div>
+
 
 <div class="container">
   <table mat-table [dataSource]="structureList">
@@ -51,16 +54,18 @@
     
   </table>
   <mat-paginator [pageSizeOptions]="[5, 10, 20]"
-showFirstLastButtons
-aria-label="Select page of periodic elements">
-</mat-paginator>
-</div>
+  showFirstLastButtons
+  aria-label="Select page of periodic elements">
+  </mat-paginator>
+  </div>
+ 
+
 
 <p-dialog [(visible)]="delete" header="Confirm Delete" [style]="{width: '40vw', height: '30vh'}">
   <div> vous les vous vraiment supprimer cette structure ?</div>
   <ng-template pTemplate="footer">
-    <button (click)="delete = false" pButton pRipple type="button" icon="pi pi-times" class="p-button-danger" label="Cancel"></button>
-    <button (click)="deleteStructure()" pButton label="delete"></button>
+    <button (click)="delete = false" pButton pRipple type="button" icon="pi pi-times" class="p-button-danger" label="Annuler"></button>
+    <button (click)="deleteStructure()" pButton label="supprimer"></button>
   </ng-template>
 </p-dialog>
 
@@ -70,50 +75,67 @@ aria-label="Select page of periodic elements">
   <form [formGroup]="structureForm">
     <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
       <div style="display: flex; flex-direction: column; align-items: center;">
-        <label class="labelMarge">Code du structure</label>
-        <input formControlName="code" style="width: 22rem;" type="text" pInputText>
+        <div class="label-container">
+          <label class="labelMarge"style="colour:blue" ><b>Code:</b></label>
+          <input formControlName="code" style="width: 22rem;border-radius: 15px;" type="text"pInputText>
+        </div>
       </div>
       <br>
       <div style="display: flex; flex-direction: column; align-items: center;">
-        <label class="labelMarge">Libellé du structure</label>
-        <input formControlName="libelle" style="width: 22rem;" type="text" pInputText>
+        <div class="label-container">
+          <label class="labelMarge"><b>Libellé:</b></label>
+          <input formControlName="libelle" style="width: 22rem;border-radius: 15px;" pInputText>
+        </div>
       </div>
       <br>
       <div style="display: flex; flex-direction: column; align-items: center;">
-        <label class="labelMarge">Ministere</label>
-        <p-dropdown formControlName="ministere" [options]="ministereList" optionLabel="libelle">
-          <ng-template let-option pTemplate="selectedItem">
-            <div *ngIf="option === null">Selected Ministere</div>
-            <div *ngIf="option !== null">{{ option.libelle }}</div>
-          </ng-template>
-  
+        <div class="label-container">
+          <label class="labelMarge"><b>Ministere:</b></label>
+          <p-dropdown formControlName="ministere" [options]="ministereList" optionLabel="libelle" >
+            <ng-template let-option pTemplate="selectedItem">
+              <div *ngIf="option === null">Selected Ministere</div>
+              <div *ngIf="option !== null">{{ option.libelle }}</div>
+            </ng-template>
           </p-dropdown>
+        </div>
       </div>
     </div>
     <br>
   </form>
   <ng-template pTemplate="footer">
-    <button pButton icon="pi pi-times" class="p-button-danger" label="Cancel"></button>
-    <button (click)="submitStructure()" pButton icon="pi pi-check" label="Submit"></button>
+    <button pButton icon="pi pi-times" class="p-button-danger"  (click)="visible = false" label="Annuler"></button>
+    <button (click)="submitStructure()" pButton icon="pi pi-check" label="Ajouter"></button>
   </ng-template>
 </p-dialog>
 
-<p-dialog header="Update Structure" [(visible)]="update" [modal]="true" [style]="{width: '40vw', height: '75vh'}"
+
+
+
+
+
+
+
+
+
+
+
+
+<p-dialog header="modifier Structure" [(visible)]="update" [modal]="true" [style]="{width: '40vw', height: '75vh'}"
   [baseZIndex]="10000" [draggable]="false" [resizable]="false">
   <form [formGroup]="structureUpdateForm">
     <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
       <div style="display: flex; flex-direction: column; align-items: center;">
-        <label class="labelMarge">Code du structure</label>
+        <label class="labelMarge">Code de structure</label>
         <input formControlName="code" style="width: 22rem;" type="text" pInputText>
       </div>
       <br>
       <div style="display: flex; flex-direction: column; align-items: center;">
-        <label class="labelMarge">Libellé du structure</label>
+        <label class="labelMarge">Libellé du structure:</label>
         <input formControlName="libelle" style="width: 22rem;" type="text" pInputText>
       </div>
       <br>
       <div style="display: flex; flex-direction: column; align-items: center;">
-        <label class="labelMarge">Ministere</label>
+        <label class="labelMarge">Ministere:</label>
         <p-dropdown formControlName="ministere" [options]="ministereList" optionLabel="libelle">
           
         </p-dropdown>
@@ -123,8 +145,7 @@ aria-label="Select page of periodic elements">
     <br>
   </form>
   <ng-template pTemplate="footer">
-    <button pButton icon="pi pi-times" class="p-button-danger" label="Cancel"></button>
-    <button (click)="updateStructure()" pButton icon="pi pi-check" label="Submit"></button>
+    <button pButton icon="pi pi-times" class="p-button-danger" label="Annuler"></button>
+    <button (click)="updateStructure()" pButton icon="pi pi-check" label="Ajouter"></button>
   </ng-template>
 </p-dialog>
-

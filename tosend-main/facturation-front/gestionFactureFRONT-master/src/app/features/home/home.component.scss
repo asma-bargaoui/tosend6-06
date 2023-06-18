@@ -1,18 +1,18 @@
 .container {
   display: flex;
-  width: auto;
+  width: 100%;
   overflow: hidden;
-  transition: margin-left 0.3s ease-in-out;
+  height: 90%;
 }
 
 .content {
   flex: 1;
-  background-color: #ffffffcb;
-  margin-left: 200px;
+  background-color: #ffffff;
 }
 
 .container.collapsed .content {
   margin-left: 65px; 
+  
 }
 
 .title {

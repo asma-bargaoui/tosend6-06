@@ -1,6 +1,7 @@
 .containerhead {
   display: flex;
   flex-direction: column;
+  margin-left: 13%;
 }
 
 .title {
@@ -11,11 +12,52 @@
   color: rgb(61, 61, 133);
 }
 
-.search-bar {
+.gray-box-container {
+  background-color: #b0aeae4e;
+  width: 94%;
+  height: 87%; /* Adjust the desired width of the gray box */
+  margin-top: 2%;
+  padding: 10%;
+  margin-left: 5%;
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
+}
+
+.container1 {
+  background-color: #fffefef3;
+  height: 30%;
+  margin-top: -130px; 
+  margin-left: -130px;
+  margin-right: -130px;
+  margin-bottom: 1%;
+
   align-items: center;
-  padding: 2rem;
+  display: flex;
+  justify-content: center;
+  
+}
+.container2{
+  background-color: #fffefef3;
+  flex-grow: 1;
+  height: 100%; /* Adjust the desired width of the gray box */
+  margin-left: -130px;
+  margin-right: -130px;
+  margin-bottom: -140px;
+  overflow: auto;
+
+}
+.search-field {
+  width: 90%;
+  margin-top: 15px; 
+  margin-left: 100px;
+  margin-right: 10px;
+}
+
+.table {
+  background-color: #fffffff3;
+  width: 5%;
+  margin-left: 5px;
+  margin-right: 25px;
 }
 
 .ConventionBtn {
@@ -32,23 +74,21 @@
   margin-right: 20px;
 }
 
-.ConventionBtn:hover {
-  background-color: #52ac9f;
+.p-dialog {
+  background-color: transparent;
 }
 
-body {
+
+.button-container {
   display: flex;
-  flex-direction: column;
-  min-height: 90vh;
+  justify-content: space-between;
+  margin-top: 20px;
 }
 
-.container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  margin-top: 5px;
-  max-height: 100vh;
+.mat-button {
+  color: blue;
 }
+
 
 
 ///////////////////////////////////////////////////////////////////////////////////////////
@@ -56,11 +96,6 @@ body {
 
    
 
-.gray-box-container {
-  background-color: #3e3d3d23;
-  margin-top: 5%;
-  padding: 10%;
-  margin-right: 5%;
-}
+
 
 

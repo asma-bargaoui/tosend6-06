@@ -10,7 +10,7 @@
     <mat-label>Search</mat-label>
     <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
   </mat-form-field>
-  <button mat-raised-button class="ConventionBtn" (click)="openDialog()" >+ utilisateur </button></div>
+  <button mat-raised-button class="ConventionBtn" (click)="openDialog()" >+  </button></div>
 
 
   <p-dialog header="Nouvelle utilisateur:"[(visible)]="visible" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000"
@@ -123,40 +123,37 @@ class="p-button-rounded p-button-warning marginItemsListe" style="font-size: 12r
     
   </div>
 
-  <p-dialog header="Update User" [(visible)]="update" [modal]="true" [style]="{width: '40vw', height: '60vh'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+  <p-dialog header="fiche modifier utilisateur" [(visible)]="update" [modal]="true" [style]="{width: '70vw', height: '60vh'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
     <form [formGroup]="userUpdateForm">
-      <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
-        <div style="display: flex; flex-direction: column; align-items: center;">
-          <label class="labelMarge">Username</label>
-          <input formControlName="username" style="width: 22rem;" type="text" pInputText>
-        </div>
+     
+            <label class="labelMarge" styl="colour:blue;"><b>Login:</b></label>
+            <input formControlName="username"  id="username"  style="width: 22rem;margin-left: 20%" type="text" pInputText>
         <br>
-        <div style="display: flex; flex-direction: column; align-items: center;">
-          <label class="labelMarge">Email</label>
-          <input formControlName="email" style="width: 22rem;" type="text" pInputText>
+        <label class="labelMarge" styl="colour:blue;"><b>Nom:</b></label>
+        <input formControlName="name" id="name"  style="width: 22rem;margin-left: 20%" type="text" pInputText>
+     
+    <br>
+        
+            <label class="labelMarge" styl="colour:blue;"><b>Email:</b></label>
+            <input formControlName="email"  id="email" style="width: 22rem;margin-left: 20%" type="text" pInputText>
+         
+        <br>
+
+        <div style="display: flex; align-items: center;">
+          <label class="labelMarge" styl="colour:blue;margin-left: 30%;"><b>Mot de passe:</b></label>
+       
+          <input formControlName="password" id="password" style="width: 20rem; margin-left: 10%;" type="password" pInputText>
         </div>
         
-       
-        
-      </div>
-      <div style="display: flex; flex-direction: column; align-items: center;">
-        <label class="labelMarge">Password</label>
-        <input formControlName="password" style="width: 22rem;" type="password" pInputText>
-      </div>
-      <br>
+        <br>
+     
     </form>
+    </p-dialog>
+    
     <ng-template pTemplate="footer">
-      <button pButton icon="pi pi-times" (click)="update = false" class="p-button-danger" label="Cancel"></button>
-      <button pButton icon="pi pi-check" (click)="updateUser()" label="Submit"></button>
+      <button pButton icon="pi pi-times" (click)="update = false" class="p-button-danger" label="Annuler"></button>
+      <button pButton icon="pi pi-check" (click)="updateUser()" label="modifier"></button>
     </ng-template>
-  </p-dialog>
-
-
-
-  
-  
-      
-          
            
   <mat-paginator [pageSizeOptions]="[5, 10, 20]"
   showFirstLastButtons

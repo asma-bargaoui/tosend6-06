@@ -6,13 +6,13 @@
   justify-content: flex-end;
   align-items: center;
   padding-right: 10px;
-  width: 90%;
+  width: 100%;
 }
 
 .navbar-container {
   display: flex;
   align-items: center;
-  margin-right: 10px; /* Add margin-right to create space between circle and hello username */
+  margin-right: 90px; /* Add margin-right to create space between circle and hello username */
 }
 
 .circle {
@@ -38,17 +38,37 @@
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  min-width: 180px;
+  padding: 8px;
 }
 
 .mat-list-item:hover {
   background-color: rgba(235, 238, 239, 0.974);
   cursor: pointer;
+
 }
 
 ::ng-deep .mat-menu-panel {
   padding-right: 10px !important;
-  max-width: 200px !important;
+  max-width: 1000px !important;
 }
+.menu-item {
+  display: flex;
+  align-items: center;
+}
+
+.menu-item-content {
+  display: flex;
+  align-items: center;
+}
+
+.menu-item-text {
+  margin-left: 10px;
+}
+
+
+
+
 
 .hello-username {
   font-size: 2vh;

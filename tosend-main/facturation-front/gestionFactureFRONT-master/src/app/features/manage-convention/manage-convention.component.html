@@ -1,122 +1,149 @@
+
+<p-dialog header="Fichier Convention" [(visible)]="visible" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000" [draggable]="false" [resizable]="false">
+  
+
+</p-dialog>
+
+
 <div class="containerhead">
   <div class="title">
     <a>Liste des conventions</a>
   </div>
-
+</div>
 
   <div class="gray-box-container">
-  <div class="search-bar">
-    <button class="ConventionBtn" (click)="openDialog()">+ Convention</button>
-    <mat-form-field>
+    <div class="container1">
+  
+
+    <mat-form-field class="search-field" >
+      
       <mat-label>Chercher</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
     </mat-form-field>
-  </div>
+
+
+    <button class="ConventionBtn" (click)="openDialog()">+ Convention</button>
+    <p-dialog header="Fichier Convention" [(visible)]="visible" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000">
+      <div class="container-wrapper">
+        <div class="container">
+          <form [formGroup]="conventionForm" class="form">
+            <mat-horizontal-stepper linear>
+
+
+              <mat-step>
+                <ng-template matStepLabel>première étape</ng-template>
+                <!-- Structure field -->
+                <div class="form-field" style="display: flex; flex-direction: column; justify-content: flex-start">
+                  <label style="text-align:center"><b>Structure:</b></label>
+                  <select formControlName="structure" class="select">
+                    <option *ngFor="let structure of structureList" [ngValue]="structure.code">{{ structure.libelle }}</option>
+                  </select>
+                </div>
+                <!-- Display red text if structure is required but missing -->
+                <div *ngIf="conventionForm.get('structure')?.hasError('required') && conventionForm.get('structure')?.touched" class="error-message">
+                  Structure is required.
+                </div>
+                <br><br>
+                <!-- Application field -->
+                <div class="form-field" style="display: flex; flex-direction: column; justify-content: flex-start">
+                  <label style="text-align:center"><b>Application:</b></label>
+                  <select formControlName="application" class="select">
+                    <option *ngFor="let application of applicationList" [ngValue]="application.code">{{ application.libelle }}</option>
+                  </select>
+                </div>
+                <!-- Display red text if application is required but missing -->
+                <div *ngIf="conventionForm.get('application')?.hasError('required') && conventionForm.get('application')?.touched" class="error-message">
+                  Application is required.
+                </div>
+                <br><br>
+                <div class="button-container">
+                  <!-- Disable the Next button if Step 1 is not valid -->
+                  <button mat-button matStepperNext [disabled]="!isStep1Valid">suivant</button>
+                </div>
+                
+              </mat-step>
+              
+
+              <mat-step>
+                <ng-template matStepLabel>Deuxième étape</ng-template>
+              
+                <div class="form-field">
+                  <label><b>Le nombre minimum :</b></label>
+                  <input formControlName="nbr_Min" type="number" pInputText>
+                  <div *ngIf="conventionForm.get('nbr_Min')?.invalid && conventionForm.get('nbr_Min')?.touched && isStep2Submitted" class="error-message">
+                    <small *ngFor="let error of getControlErrors('nbr_Min')">{{ error }}</small>
+                  </div>
+                </div>
+                
+                <div class="form-field">
+                  <label><b>Le nombre maximum :</b></label>
+                  <input formControlName="nbr_Max" type="number" pInputText>
+                  <div *ngIf="conventionForm.get('nbr_Max')?.invalid && conventionForm.get('nbr_Max')?.touched && isStep2Submitted" class="error-message">
+                    <small *ngFor="let error of getControlErrors('nbr_Max')">{{ error }}</small>
+                  </div>
+                </div>
+                
+                <div class="form-field">
+                  <label><b>Nombre réel :</b></label>
+                  <input formControlName="nbr_reel" type="number" pInputText>
+                  <div *ngIf="conventionForm.get('nbr_reel')?.invalid && conventionForm.get('nbr_reel')?.touched && isStep2Submitted" class="error-message">
+                    <small *ngFor="let error of getControlErrors('nbr_reel')">{{ error }}</small>
+                  </div>
+                </div>
+                
+              
+                <div class="button-container">
+                  <button mat-button matStepperPrevious style="color:blue;">Précédent</button>
+                  <button mat-button matStepperNext [disabled]="!isStep2Valid " (click)="isStep2Submitted = true">Suivant</button>
+                </div>
+              </mat-step>
+              
+              
+              
+      
+              <mat-step>
+                <ng-template matStepLabel>troisieme étape</ng-template>
+                <br><br><br><br>
+                <div class="form-field">
+                  <label for="conventionDuration"><b>Durée _du _convention :</b></label>
+                  <input formControlName="conventionDuration" type="number" pInputText id="conventionDuration">
+                </div>
+                <div class="form-field">
+                  <label><b>Date de signature:</b></label>
+                  <p-calendar [required]="true" formControlName="dateSignature"></p-calendar>
+                </div>
+                <div class="button-container">
+                  <div style="display: flex; flex-direction: column; align-items: center;">
+                    <button mat-button matStepperPrevious>Précédent</button>
+                    <button class="submit-button" pButton (click)="submitConvention()" icon="pi pi-check" label="Submit"></button>
+                  </div>
+                </div>
+              </mat-step>
+
+              
+            </mat-horizontal-stepper>
+          </form>
+        </div>
+      </div>
+    </p-dialog>
 </div>
 
-<div class="container">
-    <p-dialog header="Fichier Convention" [(visible)]="visible" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000">
-        
-        <form [formGroup]="conventionForm" class="form">
-          <mat-horizontal-stepper linear>
-            <mat-step>
-  
-              <ng-template matStepLabel>Première étape</ng-template>
-              <div class="form-field" style="display: flex; flex-direction: column; justify-content: flex-start">
-                <label style="text-align:center"><b>Structure:</b></label>
-                <select formControlName="structure" class="select">
-                  <option *ngFor="let structure of structureList" [ngValue]="structure.code">{{ structure.libelle }}</option>
-                </select>
-              </div>
-              <br><br>
-              <div class="form-field" style="display: flex; flex-direction: column; justify-content: flex-start">
-                <label  style="text-align:center" ><b>Application:</b></label>
-                <select formControlName="application" class="select">
-                  <option *ngFor="let application of applicationList" [ngValue]="application.code">{{ application.libelle }}</option>
-                </select>
-              </div>
-              <br><br>
-              <div class="button-container">
-                <button mat-button matStepperNext style="color:blue;margin-right:80%" >Suivant</button>
-              </div>
-            </mat-step>
-            <mat-step>
-              <ng-template matStepLabel>Deuxième étape</ng-template>
-            
-              <div class="form-field">
-                <label><b>Nombre réel :</b></label>
-                <input formControlName="nbr_reel" type="number" pInputText>
-              </div>
-
-              <div *ngIf="conventionForm.get('nbr_reel')!.errors && conventionForm.get('nbr_reel')!.touched" class="error-message">
-                <small *ngIf="conventionForm.get('nbr_reel')!.hasError('required')"> Un nombre réel est requis</small>
-              </div>
-            
-              <div class="form-field">
-                <label><b>Le nombre minimum :</b></label>
-                <input formControlName="nbr_Min" type="number" pInputText>
-                </div>
-                <div *ngIf="conventionForm.get('nbr_Min')!.errors && conventionForm.get('nbr_Min')!.touched" class="error-message">
-                  <small *ngIf="conventionForm.get('nbr_Min')!.hasError('required')">Le nombre minimum est requis</small>
-              </div>
-            
-              <div class="form-field">
-                <label><b>Le nombre maximum :</b></label>
-                <input formControlName="nbr_Max" type="number" pInputText>
-                </div>
-                <mat-error *ngIf="conventionForm.get('nbr_Max')?.hasError('required')" class="error-message"> Le nombre maximum est requis</mat-error>
-           
-                <div *ngIf="errorMessage" class="error-message">
-                  {{ errorMessage }}
-                </div>
-              <div class="button-container">
-                <button mat-button matStepperPrevious style="color:blue;">Précédent</button>
-                <button mat-button matStepperNext style="color:blue;" (click)="validateForm()">Suivant</button>
-              </div>
-            </mat-step>
-  
-            <mat-step>
-              <ng-template matStepLabel>Troisième étape</ng-template>
-              <br><br><br><br>
-              <div class="form-field">
-                <label for="conventionDuration"><b>Durée de la convention :</b></label>
-                <input formControlName="conventionDuration" type="number" pInputText id="conventionDuration">
-              </div>
-  
-              <div class="form-field">
-                <label><b>Date de signature:</b></label>
-                <p-calendar [required]="true" formControlName="dateSignature"></p-calendar>
-              </div>
-  
-              <div class="button-container">
-                <div style="display: flex; flex-direction: column; align-items: center;">
-                  <button mat-button matStepperPrevious style="color: blue;">Previous</button>
-                  <br><br>
-                  <button class="submit-button" style="color: blue; justify-content: center; align-items: center; transform: translateX(180%);" pButton (click)="submitConvention()" icon="pi pi-check" label="Submit"></button>
-                </div>
-              </div>
-  
-            </mat-step>
-  
-          </mat-horizontal-stepper>
-        </form>
-    
-  </p-dialog>
 
 
-
-<div class="container">
+<div class="container2">
+  
     <table mat-table [dataSource]="dataSource"  class="table">
 
-    <ng-container matColumnDef="application">
-      <th mat-header-cell *matHeaderCellDef>Application</th>
-      <td mat-cell *matCellDef="let convention">{{ convention.application.libelle }} ({{ convention.application.price }})</td>
-    </ng-container>
-
-    <ng-container matColumnDef="structure">
-      <th mat-header-cell *matHeaderCellDef>Structure</th>
-      <td mat-cell *matCellDef="let convention">{{ convention.structure.libelle }}</td>
-    </ng-container>
+      <ng-container matColumnDef="application">
+        <th mat-header-cell *matHeaderCellDef>Application</th>
+        <td mat-cell *matCellDef="let convention"> {{ getApplicationLibelle(convention.applicationCode) }} </td>
+      </ng-container>
+      
+      <ng-container matColumnDef="structure">
+        <th mat-header-cell *matHeaderCellDef>Structure</th>
+        <td mat-cell *matCellDef="let convention"> {{ getStructureLibelle(convention.structureLibelle) }}</td>
+      </ng-container>
+      
 
     <ng-container matColumnDef="nbr_reel">
       <th mat-header-cell *matHeaderCellDef>Nombre réel</th>
@@ -134,10 +161,10 @@
     </ng-container>
 
     <ng-container matColumnDef="total_amount">
-      <th mat-header-cell *matHeaderCellDef>Montant total</th>
-      <td mat-cell *matCellDef="let convention">{{ convention.total_amount }}</td>
+      <th mat-header-cell *matHeaderCellDef>Montant total/DT</th>
+      <td mat-cell *matCellDef="let convention">{{ convention.totalAmount }}</td>
     </ng-container>
-
+    
     <ng-container matColumnDef="dateSignature">
       <th mat-header-cell *matHeaderCellDef>Date de signature</th>
       <td mat-cell *matCellDef="let convention">{{ convention.dateSignature }}</td>
@@ -154,6 +181,7 @@
     </ng-container>
 
     <ng-container matColumnDef="action">
+      
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let convention">
         <button (click)="openDeleteDialog(convention.id)" mat-icon-button color="warn">
@@ -172,89 +200,23 @@
           <mat-icon>edit</mat-icon>
         </button>
         
-        <p-dialog header="Fichier Convention" [(visible)]="visible" [modal]="true" [style]="{width: '50vw'}" [baseZIndex]="10000">
-          <div class="container-wrapper">
-            <div class="container">
-              <form [formGroup]="conventionForm" class="form">
-                <mat-horizontal-stepper linear>
-                  <mat-step>
-                    <ng-template matStepLabel>Première étape</ng-template>
-                    <div class="form-field" style="display: flex; flex-direction: column; justify-content: flex-start">
-                      <label style="text-align:center"><b>Structure:</b></label>
-                      <select formControlName="structure" class="select">
-                        <option *ngFor="let structure of structureList" [value]="structure.code">{{ structure.libelle }}</option>
-                      </select>
-                    </div>
-                    <br><br>
-                    <div class="form-field" style="display: flex; flex-direction: column; justify-content: flex-start">
-                      <label  style="text-align:center" ><b>Application:</b></label>
-                      <select formControlName="application" class="select">
-                        <option *ngFor="let application of applicationList" [value]="application.code">{{ application.libelle }}</option>
-                      </select>
-                    </div>
-                    <br><br>
-                    <div class="button-container">
-                      <button mat-button matStepperNext color="primary">Suivant</button>
-                    </div>
-                  </mat-step>
-        
-                  <mat-step>
-                    <ng-template matStepLabel>Deuxième étape</ng-template>
-                    <div class="form-field">
-                      <label><b>Nombre réel :</b></label>
-                      <input formControlName="nbr_reel" type="number" pInputText>
-                      <mat-error *ngIf="conventionForm.get('nbr_reel')?.hasError('required')">Un nombre réel est requis</mat-error>
-                      <mat-error *ngIf="conventionForm.errors?.['nbrRange']">La valeur du nombre réel doit être entre le nombre minimum et le nombre maximum</mat-error>
-                    </div>
-                    <div class="form-field">
-                      <label><b>Nombre minimum :</b></label>
-                      <input formControlName="nbr_Min" type="number" pInputText>
-                      <mat-error *ngIf="conventionForm.get('nbr_Min')?.hasError('required')">Le nombre minimum est requis</mat-error>
-                    </div>
-                    <div class="form-field">
-                      <label><b>Nombre maximum :</b></label>
-                      <input formControlName="nbr_Max" type="number" pInputText>
-                      <mat-error *ngIf="conventionForm.get('nbr_Max')?.hasError('required')">Le nombre maximum est requis</mat-error>
-                    </div>
-                    <div class="button-container">
-                      <button mat-button matStepperPrevious color="primary">Précédent</button>
-                      <button mat-button matStepperNext color="primary" (click)="validateForm()">Suivant</button>
-                    </div>
-                  </mat-step>
-        
-                  <mat-step>
-                    <ng-template matStepLabel>Troisieme étape</ng-template>
-                    <br><br><br><br>
-                    <div class="form-field">
-                      <label for="conventionDuration"><b>Durée de la convention :</b></label>
-                      <input formControlName="conventionDuration" type="number" pInputText id="conventionDuration">
-                    </div>
-                    <div class="form-field">
-                      <label><b>Date de signature:</b></label>
-                      <p-calendar [required]="true" formControlName="dateSignature"></p-calendar>
-                    </div>
-                    <div class="button-container">
-                      <div style="display: flex; flex-direction: column; align-items: center;">
-                        <button mat-button matStepperPrevious color="primary">Précédent</button>
-                        <br><br>
-                        <button class="submit-button" pButton type="submit" icon="pi pi-check" label="Submit" (click)="updateConvention()"></button>
-                      </div>
-                    </div>
-                  </mat-step>
-                </mat-horizontal-stepper>
-              </form>
-            </div>
-          </div>
-        </p-dialog>
+       
       </td>
     </ng-container>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+
+
+
+    
   </table>
   <mat-paginator [hidePageSize]="true" aria-label="Select page of periodic elements"></mat-paginator>
 </div>
+
 </div>
-</div>
+
+
 
 

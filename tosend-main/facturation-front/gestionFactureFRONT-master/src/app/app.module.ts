@@ -18,7 +18,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
 import { RouterModule, Routes } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 
 
@@ -39,11 +39,9 @@ import { Component } from '@angular/core';
     FeaturesModule,
     NgxPaginationModule,
     CommonModule,
-
+    FullCalendarModule,
    // Chart,
 
-   
-   
   ],
   providers: [
     {

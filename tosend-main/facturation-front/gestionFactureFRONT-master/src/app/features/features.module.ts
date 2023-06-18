@@ -19,6 +19,7 @@ import { FormsModule } from '@angular/forms';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 
 
@@ -48,7 +49,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatPaginatorModule,
     MatTableModule,
     FormsModule,
-    
+    FullCalendarModule
   ],
   providers: [
     {

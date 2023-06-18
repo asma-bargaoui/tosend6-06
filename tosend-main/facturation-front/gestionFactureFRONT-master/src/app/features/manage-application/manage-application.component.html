@@ -2,14 +2,14 @@
   <div class="title">
     <a>Liste des Application</a>
   </div>
-  
+
 <div style="display: flex; justify-content: flex-start; flex-direction: row; margin-top: 2rem">
   
   <mat-form-field>
     <mat-label>Search</mat-label>
       <input matInput (keyup)="applyFilter($event)" placeholder="" #input>
     </mat-form-field>
-  <button mat-raised-button class="ConventionBtn" (click)="openDialog()" >+  application </button>
+  <button mat-raised-button class="ConventionBtn" (click)="openDialog()" >+ </button>
 </div>
 
 
@@ -38,6 +38,7 @@
     <button pButton icon="pi pi-check" (click)="submitApplication()" label="Submit" ></button>
   </ng-template>
 </p-dialog>
+  <div class="gray-box-container">
 
   <div class="container">
     <table mat-table [dataSource]="dataSource">
@@ -71,6 +72,44 @@
         </td>
       </ng-container>
     
+
+
+
+
+
+
+      <p-dialog header="Fiche Application" [(visible)]="visible" [modal]="true" [style]="{width: '70vw', height: '60vh'}" [baseZIndex]="10000"
+  [draggable]="false" [resizable]="false">
+  <form [formGroup]="applicationForm">
+    <div style="display: flex; flex-direction: column; justify-content: center; align-items: center;">
+      <div style="display: flex; flex-direction: row; align-items: center;">
+        <div>
+          <label class="labelMarge"><b>Code: </b></label>
+          <input formControlName="code" style="width: 22rem;border-radius: 15px;" type="text" pInputText>
+          <div *ngIf="applicationForm.get('code')?.invalid && applicationForm.get('code')?.touched" style="color: red;">Ce champ est requis</div>
+        </div>
+        <div style="margin-left: 4rem;">
+          <label class="labelMarge"><b>Libellé: </b> </label>
+          <input formControlName="libelle" style="width: 22rem; border-radius: 15px;" type="text;" pInputText>
+          <div *ngIf="applicationForm.get('libelle')?.invalid && applicationForm.get('libelle')?.touched" style="color: red;">Ce champ est requis</div>
+        </div>
+      </div>
+      <div style="margin-top: 1rem;">
+        <div style="display: flex; flex-direction: row; align-items: center;">
+          <div>
+            <label class="labelMarge"><b>Prix TTC: </b></label>
+            <input formControlName="prix" style="width: 22rem;border-radius: 15px;"type="text" pInputText>
+            <div *ngIf="applicationForm.get('prix')?.invalid && applicationForm.get('prix')?.touched" style="color: red;">Ce champ est requis</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+  <ng-template pTemplate="footer" style="display: flex; justify-content: center; margin-top: 1rem; padding-right: 50%;">
+    <button pButton icon="pi pi-times" (click)="visible = false" class="p-button-danger" label="Annuler"></button>
+    <button pButton icon="pi pi-check" (click)="submitApplication()" style="margin-right: 35%;" class="p-button-text-sucess" label="Ajouter"></button>
+  </ng-template>  
+</p-dialog>
       <!-- Column Definitions -->
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>

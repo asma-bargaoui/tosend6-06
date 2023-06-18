@@ -1,16 +1,19 @@
 <div class="nav">
   <div class="hello-username">Bienvenue, {{ usernameLoggedIn }}</div>
   <div class="navbar-container">
+    <div class="circle">
+      <span class="initials">{{usernameLoggedIn| twoFirstLetters}}</span>
+    </div>
     
     <mat-icon [matMenuTriggerFor]="menu" class="arrowDown">keyboard_arrow_down</mat-icon>
   </div>
-</div>
+
 
 <mat-menu #menu="matMenu" class="myMenu" xPosition="after">
-  <mat-list>
-    <mat-list-item (click)="logOut()">
+  <mat-list-item (click)="logOut()" class="menu-item">
+    <div class="menu-item-content">
       <mat-icon mat-list-icon>exit_to_app</mat-icon>
-      <div mat-line>Déconnexion</div>
-    </mat-list-item>
-  </mat-list>
+      <div class="menu-item-text">Déconnexion</div>
+    </div>
+  </mat-list-item>
 </mat-menu>

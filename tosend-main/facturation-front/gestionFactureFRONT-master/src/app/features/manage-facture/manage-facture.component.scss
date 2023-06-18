@@ -133,14 +133,22 @@ body {
 
 
 .containerhead {
-  margin-top: 1%;
+  margin-top: 0.1%;
+}
+
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  max-height: 100vh;
 }
 
 .gray-box-container {
   background-color: #3e3d3d23;
   margin-top: 5%;
   padding: 10%;
-  margin-right: 10%;
+  margin-right: 5%;
 }
 
 .table {

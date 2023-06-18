@@ -127,6 +127,7 @@ export class ManageUsersComponent implements OnInit, AfterViewInit {
   initUpdateForm(){
     this.userUpdateForm = this.fb.group({
       username: ["", Validators.required],
+      name: ["", Validators.required],
       email: ["", [Validators.required, Validators.email]],
       password: ["", Validators.required],
       roles: [[], Validators.required]
@@ -159,29 +160,7 @@ export class ManageUsersComponent implements OnInit, AfterViewInit {
     }
   
   }
-/**   private createChartDoughnutCategorie(): void {
-    const canvas = document.getElementById('analyseCategorie') as HTMLCanvasElement;
-    const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
-  
-    this.chart = new Chart(ctx, {
-      type: 'doughnut',
-      data: {
-        labels: ['Users', 'Admins'],
-        datasets: [{
-          label: 'User and Admin Counts',
-          data: [this.userRoleCount, this.adminRoleCount],
-          backgroundColor: ['blue', 'red']
-        }],
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        aspectRatio: 1
-      }
-    });
-  }
-  */
-  
+
   submitUser() {
     const userFormValue = this.userForm.value;
     userFormValue.role = [userFormValue.role.name]; // Wrap the role name in an array
@@ -210,8 +189,10 @@ export class ManageUsersComponent implements OnInit, AfterViewInit {
     this.userUpdateForm.patchValue({
       id: user.id,
       email: user.email,
+      username: user.username,
+      name: user.name,
       password: user.password,
-      role: user.roles[0],
+   
     })
   }
 

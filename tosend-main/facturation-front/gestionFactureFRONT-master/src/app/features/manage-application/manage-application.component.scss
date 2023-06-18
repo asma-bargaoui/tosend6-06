@@ -11,11 +11,45 @@
   color: rgb(61, 61, 133);
 }
 
-.search-bar {
+.gray-box-container {
+  background-color: #3e3d3d23;
+  width: 90%; /* Adjust the desired width of the gray box */
+  margin-top: 2%;
+  padding: 10%;
+  margin-right: 5%;
+}
+
+.container1 {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 2rem;
+  font-size: 14px;
+  align-items: flex-start;
+  background-color: #d7d9e5;
+  width: 100%; /* Adjust the desired width of container 1 */
+  height: 100px; /* Adjust the desired height of container 1 */
+  margin-top: 2%;
+  justify-content: flex-end;
+}
+
+.search-bar {
+  background-color: #feeded;
+  padding: 20px;
+  width: 50%; /* Adjust the desired width of container 1 */
+  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-left: 200%;
+
+
+}
+
+.mat-mdc-form-field {
+  font-size: 14px;
+  width: 500%;
+}
+
+.table {
+  width: 100%; /* Adjust the desired width of the table */
+  height: 50px;
+  overflow: auto;
 }
 
 .ConventionBtn {
@@ -32,9 +66,14 @@
   margin-right: 20px;
 }
 
-.ConventionBtn:hover {
-  background-color: #52ac9f;
+.container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5px;
+  max-height: 100vh;
 }
+
 
 body {
   display: flex;
@@ -51,104 +90,10 @@ body {
 }
 
 
-///////////////////////////////////////////////////////////////////////////////////////////
 
 
    
 
-.gray-box-container {
-  background-color: #3e3d3d23;
-  margin-top: 5%;
-  padding: 10%;
-  margin-right: 5%;
-}
 
 
 
-.containerhead {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start; /* Align content to the start (left) */
-}
-
-.title {
-  text-align: left;
-  margin-top: 1.5rem;
-  font-size: 50px;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  color: rgb(61, 61, 133);
-}
-
-.search-bar {
-  display: flex;
-  justify-content: flex-end; /* Align content to the end (right) */
-  align-items: center;
-  padding: 2rem;
-}
-
-.UtilisateurBtn {
-  border-radius: 15px;
-  text-transform: uppercase;
-  font-weight: bold;
-  background-color: #2aa18b;
-  color: #659e3d;
-  border: none;
-  font-size: 15px;
-  padding: 10px 15px;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 0 0 2px rgba(97, 191, 173, 0.5);
-  margin-left: 20px; /* Use margin-left instead of margin-right */
-}
-
-.UtilisateurBtn:hover {
-  background-color: #52ac9f;
-}
-
-body {
-  display: flex;
-  flex-direction: column;
-  min-height: 90vh;
-}
-
-.container {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  margin-top: 5px;
-  max-height: 100vh;
-}
-
-
-.active-button {
-  border-radius: 15px;
-  text-transform: uppercase;
-  font-weight: bold;
-  background-color: #2aa18b; /* Green color for active state */
-  color: #fff;
-  border: none;
-  font-size: 15px;
-  padding: 10px 15px;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 0 0 2px rgba(97, 191, 173, 0.5);
-}
-
-.inactive-button {
-  border-radius: 15px;
-  text-transform: uppercase;
-  font-weight: bold;
-  background-color: #e74c3c; /* Red color for inactive state */
-  color: #fff;
-  border: none;
-  font-size: 15px;
-  padding: 10px 15px;
-  transition: background-color 0.3s ease;
-  box-shadow: 0 0 0 2px rgba(231, 76, 60, 0.5);
-}
-
-.active-button:hover {
-  background-color: #52ac9f;
-}
-
-.inactive-button:hover {
-  background-color: #ff665c;
-}

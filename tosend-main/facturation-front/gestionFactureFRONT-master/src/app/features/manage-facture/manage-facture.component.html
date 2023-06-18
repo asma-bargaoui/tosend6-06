@@ -5,7 +5,9 @@
 
 
  
+<div class="container">
   <div class="gray-box-container">
+
     <div class="note-container">
       <p class="note-message">
   <p>Note: Veuillez noter qu'un e-mail de rappel sera envoyé à votre adresse e-mail enregistrée avant la date d'échéance de chaque facture. 
@@ -41,15 +43,18 @@
       <!-- Status Column -->
       <ng-container matColumnDef="status">
         <th mat-header-cell *matHeaderCellDef>Status</th>
-        <td mat-cell *matCellDef="let row">{{ row.status }}</td>
+        <td mat-cell *matCellDef="let row">
+          {{ row.status === 'pending' ? 'en attente' : (row.status === 'paid' ? 'payé' : row.status) }}
+        </td>
       </ng-container>
+      
 
       <!-- Action Column -->
       <ng-container matColumnDef="action">
         <th mat-header-cell *matHeaderCellDef></th>
         <td mat-cell *matCellDef="let row">
           <button mat-button (click)="paid(row.id)" class="btn btn-primary custom-button">
-            Marque comme payé
+            Marquer comme payé
           </button>
         </td>
       </ng-container>
